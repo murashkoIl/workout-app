@@ -17,5 +17,13 @@
 
   &WrapperSection {
     padding-top: 1rem;
+    padding-bottom: 4rem;
   }
+}
+
+.button {
+  position: fixed;
+  bottom: 1rem;
+  width: calc(100vw - 2rem);
+  max-width: 56.25rem;
 }

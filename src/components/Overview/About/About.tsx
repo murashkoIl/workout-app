@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './About.module.scss';
-import main from '../../images/main.jpeg';
+import main from '../../../images/main.jpeg';
 
 const About: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const About: React.FC = () => {
         <div className={styles.mainImageWrapper}>
           <img src={main} alt="main" />
         </div>
-        <div className={styles.mainTitle}>Workout App</div>
+        <div className={styles.mainTitle}>Morning Flexibility Routine</div>
       </div>
     </section>
   )
