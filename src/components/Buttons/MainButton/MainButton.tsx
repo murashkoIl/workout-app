@@ -7,7 +7,7 @@ type ButtonProps = {
   linkTo: string
 }
 
-const Button: React.FC<ButtonProps> = ({ text, linkTo }) => {
+const MainButton: React.FC<ButtonProps> = ({ text, linkTo }) => {
   return (
       <Link className={styles.link} to={linkTo}>
         <div className={styles.buttonWrapper}>
@@ -17,4 +17,4 @@ const Button: React.FC<ButtonProps> = ({ text, linkTo }) => {
   )
 }
 
-export default Button;
+export default MainButton;

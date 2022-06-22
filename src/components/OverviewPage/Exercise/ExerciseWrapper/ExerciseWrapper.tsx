@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ExerciseCard from '../ExerciseCard/ExerciseCards';
 import styles from './ExerciseWrapper.module.scss';
 import { IExerciseCard } from '../../../../interfaces/ExerciseCardInterface';
-import Button from '../../../Buttons/MainButton/MainButton';
+import MainButton from '../../../Buttons/MainButton/MainButton';
 
 ///
 import exercise from '../../../../images/exercise-1.jpeg';
@@ -52,7 +52,7 @@ const ExerciseWrapper: React.FC = () => {
         </div>
         <div className={styles.buttonWrapper}>
           <div className={styles.button}>
-            <Button text="Start Workout" linkTo="/exercises"/>
+            <MainButton text="Start Workout" linkTo="/exercises"/>
           </div>
         </div>
       </div>

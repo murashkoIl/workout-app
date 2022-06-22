@@ -1,0 +1,26 @@
+.complete {
+
+  &Icon {
+    margin-top: 20%;
+    font-size: 3rem;
+    color: #1DE9B6;
+  }
+
+  &Title {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.7rem;
+  }
+
+  &Description {
+    opacity: 0.5;
+    padding-bottom: 1rem;
+  }
+
+  &MinutesCount {
+    font-size: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+}
