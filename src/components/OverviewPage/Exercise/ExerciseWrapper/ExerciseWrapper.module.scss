@@ -1,7 +1,7 @@
 .exercise {
 
   &Title {
-    font-size: 1.25rem;
+    font-size: 1.7rem;
   }
 
   &Cards {
@@ -24,6 +24,8 @@
 .button {
   position: fixed;
   bottom: 1rem;
+  border-radius: 10px;
+  background-color: #AA00FF;
   width: calc(100vw - 2rem);
   max-width: 56.25rem;
 }

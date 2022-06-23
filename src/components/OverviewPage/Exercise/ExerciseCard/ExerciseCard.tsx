@@ -4,7 +4,7 @@ import styles from './ExerciseCard.module.scss';
 type ExerciseCardProps = {
   img: string,
   title: string,
-  duration: string,
+  duration: number,
 }
 
 const ExerciseCard: React.FC<ExerciseCardProps> = ({ img, title, duration }) => {
@@ -15,7 +15,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({ img, title, duration }) => 
       </div>
       <div className={styles.exerciseInfo}>
         <div className={styles.exerciseInfoTitle}>{title}</div>
-        <div className={styles.exerciseInfoDuration}>{duration}</div>
+        <div className={styles.exerciseInfoDuration}>{duration} sec</div>
       </div>
     </div>
   )

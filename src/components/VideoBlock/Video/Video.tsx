@@ -11,7 +11,7 @@ const Video: React.FC<VideoProps> = ({ video }) => {
       <video controls>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.  
-      </video>  
+      </video> 
     </div> 
   )
 }

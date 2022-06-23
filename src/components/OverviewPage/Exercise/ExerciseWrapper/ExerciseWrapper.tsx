@@ -1,54 +1,51 @@
-import React, { useState } from 'react'
-import ExerciseCard from '../ExerciseCard/ExerciseCards';
+import React from 'react'
+import ExerciseCard from '../ExerciseCard/ExerciseCard';
 import styles from './ExerciseWrapper.module.scss';
-import { IExerciseCard } from '../../../../interfaces/ExerciseCardInterface';
 import MainButton from '../../../Buttons/MainButton/MainButton';
-
-///
-import exercise from '../../../../images/exercise-1.jpeg';
 import Divider from '../../../Divider/Divider';
-///
+import { OverviewProps } from '../../OverviewPage';
 
-const ExerciseWrapper: React.FC = () => {
 
-  const [exercises, setExercises] = useState<IExerciseCard[]>([]);
-
-  console.log(exercises);
-  
-
+const ExerciseWrapper: React.FC<OverviewProps> = ({ warmUp, exercise, stretching }) => {  
   return (
     <section className={styles.exerciseWrapperSection}>
       <div className="container">
         <Divider />
         <div className={styles.exerciseWrapper}>
           <div className={styles.exerciseTitle}>
-            Warm Up
+            Warm Up 
           </div>
+
           <div className={styles.exerciseCards}>
-            <ExerciseCard img={exercise} title={'High Kicks'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'High Kicks'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'High Kicks'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'High Kicks'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'High Kicks'} duration={'20 sec'}/>
+            {warmUp?.exercises.map((item: any) => {
+              return <ExerciseCard key={item.id} img={item.photo} title={item.title} duration={item.duration}/>
+            })}
           </div>
+
           <Divider />
+
           <div className={styles.exerciseTitle}>
             Exercise
           </div>
+
           <div className={styles.exerciseCards}>
-            <ExerciseCard img={exercise} title={'Exercise'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'Exercise'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'Exercise'} duration={'20 sec'}/>
+            {exercise?.exercises.map((item: any) => {
+              return <ExerciseCard key={item.id} img={item.photo} title={item.title} duration={item.duration}/>
+            })}
           </div>
+
           <Divider />
+
           <div className={styles.exerciseTitle}>
             Stretching
           </div>
+
           <div className={styles.exerciseCards}>
-            <ExerciseCard img={exercise} title={'Stretching'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'Stretching'} duration={'20 sec'}/>
-            <ExerciseCard img={exercise} title={'Stretching'} duration={'20 sec'}/>
+            {stretching?.exercises.map((item: any) => {
+              return <ExerciseCard key={item.id} img={item.photo} title={item.title} duration={item.duration}/>
+            })}
           </div>
+
         </div>
         <div className={styles.buttonWrapper}>
           <div className={styles.button}>

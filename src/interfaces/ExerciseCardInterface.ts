@@ -1,9 +1,8 @@
 export interface IExerciseCard {
-  id: number
-  photo: string
-  video: string
-  description: string
   title: string
-  duration: number
-  done: boolean
+  exercises: any
+  muscle_group: {
+    name: string
+    photo: string
+  }
 }

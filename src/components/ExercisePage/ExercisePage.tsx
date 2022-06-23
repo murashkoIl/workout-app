@@ -5,24 +5,29 @@ import { Link } from 'react-router-dom';
 import styles from './Exercisepage.module.scss';
 import SwitchButton from '../Buttons/SwitchButton/SwitchButton';
 import Timer from '../Timer/Timer';
-import Video from '../Video/Video';
 import PlayStopButton from '../Buttons/PlayStopButton/PlayStopButton';
 import Divider from '../Divider/Divider';
 import CompletePage from '../CompletePage/CompletePage';
+import VideoBlock from '../VideoBlock/VideoBlock';
+import Video from '../VideoBlock/Video/Video';
+import Pause from '../VideoBlock/Pause/Pause';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { pauseHandler } from '../../redux/slices/pauseSlice';
+import { RootState } from '../../redux/store';
 
 const ExercisePage: React.FC = () => {
-
-  const [isPause, setIsPause] = useState<boolean>(true);
+  const isPause = useSelector((state: RootState) => state.pause.isPause);
+  const dispatch = useDispatch();
 
   const handlePlayPauseButtonCLick = (): void => {
     // останавливать и воспроизводить видео
-    setIsPause(!isPause)
+    dispatch(pauseHandler())
   }
   
   return (
-    
     <section className={styles.exercisePageSection}>
-      {/* <CompletePage type={faCheck} /> */}
+      {/* <CompletePage type={faCheck} minutes={25}/> */}
       <div className="container">
         <div className={styles.goback}>
           <Link to="/">
@@ -36,6 +41,13 @@ const ExercisePage: React.FC = () => {
           <SwitchButton type={faCircleArrowLeft}/>
           {/* <Timer time={5} /> */}
           <SwitchButton type={faCircleArrowRight}/>
+        </div>
+
+        <div className={styles.videoWrapper}>
+          <VideoBlock>
+            <Video video={video}/>
+            {/* <Pause /> */}
+          </VideoBlock>
         </div>
 
         <div className={styles.imgWrapper}>
@@ -52,6 +64,7 @@ const ExercisePage: React.FC = () => {
     </section>
   )
 }
+
 
 const video = 'https://player.vimeo.com/external/342977140.sd.mp4?s=2b60f9e7ae6e44772a0563101338683068724e24&profile_id=165'
 

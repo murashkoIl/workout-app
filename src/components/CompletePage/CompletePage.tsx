@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type CompletePageProps = {
   type: IconDefinition
+  minutes: number
 }
 
-const CompletePage: React.FC<CompletePageProps> = ({ type }) => {
+const CompletePage: React.FC<CompletePageProps> = ({ type, minutes }) => {
   return (
     <div className={styles.completeWrapper}>
       <div className="container">
@@ -19,9 +20,9 @@ const CompletePage: React.FC<CompletePageProps> = ({ type }) => {
         <div className={styles.completeDescription}>Nice job. You’re done. Here’s the workout summary.</div>
         <div className="completeMinutes">
           <div className="completeMinutesTitle">Minutes</div>
-          <div className={styles.completeMinutesCount}>25</div>
+          <div className={styles.completeMinutesCount}>{minutes}</div>
         </div>
-        <div className="completeSaveButton">
+        <div className={styles.completeSaveButton}>
           <MainButton text="Save & Continue" linkTo="/" />
         </div>
       </div>

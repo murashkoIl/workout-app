@@ -1,0 +1,24 @@
+.pause {
+  &Wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  &Title {
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  &LeaveButton {
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 30%;
+    margin-top: 1rem;
+  }
+}
+
+
