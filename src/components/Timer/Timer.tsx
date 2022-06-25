@@ -1,22 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setTimer, timerTick, toggleActive } from '../../redux/slices/timerSlice';
+import { RootState } from '../../redux/store';
 
 type TimerProps = {
   time: number
 }
 
 const Timer: React.FC<TimerProps> = ({ time }) => {
+  const dispatch = useDispatch();
+  const timer = useSelector((state: RootState) => state.timer.time);
+  const isTimerActive = useSelector((state: RootState) => state.timer.isTimerActive);
 
-  const [timer, setTimer] = useState<number>(time);
+ useEffect(() => {
+   dispatch(setTimer(time));
+   dispatch(toggleActive());
+ }, []);
 
-  const timeout = setTimeout(() => {
-    setTimer(timer - 1);
-  }, 1000);
+ useEffect(() => {
+   let interval: any  = null;
 
-  if (timer === 0) {
-    clearInterval(timeout);
-  } 
+   if (!timer) return;
 
-  console.log('timer rerendered');
+   if (isTimerActive) {
+    interval = setInterval(() => {
+      dispatch(timerTick());
+    }, 1000);
+  } else if (isTimerActive && !timer) {
+    dispatch(toggleActive());
+    clearInterval(interval);
+  }
+  return () => clearInterval(interval);
+ }, [timer]);
   
   return (
     <div>
