@@ -40,7 +40,7 @@ const ExercisePage: React.FC = () => {
         <div className={styles.controlPanel}>
           <SwitchButton type={faCircleArrowLeft}/>
 
-          <Timer time={5} />
+          <Timer time={10} />
 
           <SwitchButton type={faCircleArrowRight}/>
         </div>

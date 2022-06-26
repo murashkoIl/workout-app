@@ -1,0 +1,12 @@
+.exercise {
+  &Title {
+    font-size: 1.7rem;
+  }
+
+  &Cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

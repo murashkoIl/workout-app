@@ -1,18 +1,28 @@
 .exercise {
 
-  &Title {
-    font-size: 1.7rem;
-  }
-
-  &Cards {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
   &Wrapper {
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & svg {
+      padding: 0.5rem;
+
+      &:nth-child(1) {
+        margin-top: 2.6rem;
+      }
+
+      &:nth-child(2) {
+        margin-top: 2.6rem;
+      }
+
+      @media (max-width: 720px) {
+        &:nth-child(2) {
+          margin-top: 0;
+        }
+      }
+    }
   }
 
   &WrapperSection {

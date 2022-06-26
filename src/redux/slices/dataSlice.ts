@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface DataState {
   exercises: any
+  isDataLoading: boolean
 }
 
 const initialState: DataState = {
-  exercises: {}
+  exercises: {},
+  isDataLoading: true
 }
 
 export const dataSlice = createSlice({
@@ -14,11 +16,15 @@ export const dataSlice = createSlice({
   reducers: {
     setExercises: (state, action: PayloadAction<any>) => {
       state.exercises = {...action.payload}
+    },
+
+    setIsDataLoading: (state) => {
+      state.isDataLoading = !state.isDataLoading;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setExercises } = dataSlice.actions
+export const { setExercises, setIsDataLoading} = dataSlice.actions
 
 export default dataSlice.reducer

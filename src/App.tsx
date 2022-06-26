@@ -6,7 +6,7 @@ import ExercisePage from './components/ExercisePage/ExercisePage';
 import { IVideos } from './interfaces/VideosInterface';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
-import { setExercises } from './redux/slices/dataSlice';
+import { setExercises, setIsDataLoading } from './redux/slices/dataSlice';
 
 
 const App: React.FC = () => {
@@ -22,6 +22,7 @@ const App: React.FC = () => {
       })
       .then(data => {       
         dispatch(setExercises(data));
+        dispatch(setIsDataLoading());
 
         data.data.questions.forEach((category: any) => {
             category.exercises.forEach((exercise: any) => {
