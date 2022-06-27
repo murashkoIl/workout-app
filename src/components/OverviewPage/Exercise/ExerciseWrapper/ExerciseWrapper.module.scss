@@ -10,16 +10,16 @@
       padding: 0.5rem;
 
       &:nth-child(1) {
-        margin-top: 2.6rem;
+        padding-top: 2.6rem;
       }
 
       &:nth-child(2) {
-        margin-top: 2.6rem;
+        padding-top: 2.6rem;
       }
 
       @media (max-width: 720px) {
         &:nth-child(2) {
-          margin-top: 0;
+          padding-top: 0;
         }
       }
     }

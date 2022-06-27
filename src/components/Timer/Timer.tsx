@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
-
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { setTimer, timerTick, toggleActive } from '../../redux/slices/timerSlice';
 import { RootState } from '../../redux/store';
 
@@ -9,9 +9,9 @@ type TimerProps = {
 }
 
 const Timer: React.FC<TimerProps> = ({ time }) => {
-  const dispatch = useDispatch();
-  const timer = useSelector((state: RootState) => state.timer.time);
-  const isTimerActive = useSelector((state: RootState) => state.timer.isTimerActive);
+  const dispatch = useAppDispatch();
+  const timer = useAppSelector((state: RootState) => state.timer.time);
+  const isTimerActive = useAppSelector((state: RootState) => state.timer.isTimerActive);
 
  useEffect(() => {
    dispatch(setTimer(time));

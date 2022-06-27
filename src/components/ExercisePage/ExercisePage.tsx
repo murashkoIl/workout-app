@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faCircleArrowLeft, faCircleArrowRight, faPlay, faPause, faCheck  } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -12,13 +12,13 @@ import VideoBlock from '../VideoBlock/VideoBlock';
 import Video from '../VideoBlock/Video/Video';
 import Pause from '../VideoBlock/Pause/Pause';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks/hooks';
 import { pauseHandler } from '../../redux/slices/pauseSlice';
 import { RootState } from '../../redux/store';
 
 const ExercisePage: React.FC = () => {
-  const isPause = useSelector((state: RootState) => state.pause.isPause);
-  const dispatch = useDispatch();
+  const isPause = useAppSelector((state: RootState) => state.pause.isPause);
+  const dispatch = useAppDispatch();
 
   const handlePlayPauseButtonCLick = (): void => {
     // останавливать и воспроизводить видео

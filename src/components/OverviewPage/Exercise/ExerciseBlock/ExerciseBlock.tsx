@@ -1,12 +1,12 @@
 import React from 'react'
 import { RootState } from '../../../../redux/store';
-import { useSelector } from 'react-redux';
 import ExerciseCard from '../ExerciseCard/ExerciseCard';
 import Divider from '../../../Divider/Divider';
 import styles from './ExerciseBlock.module.scss';
+import { useAppSelector } from '../../../../redux/hooks/hooks';
 
 const ExerciseBlock: React.FC = () => {
-  const exercises = useSelector((state: RootState) => state.data.exercises);
+  const exercises = useAppSelector((state: RootState) => state.data.exercises);
 
   return (
     <>
