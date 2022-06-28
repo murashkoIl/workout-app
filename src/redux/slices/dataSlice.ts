@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { IData } from '../../interfaces/DataInterface';
 
-export interface DataState {
-  exercises: any
+interface DataState {
+  exercises: IData | any;
   status: string
 }
 
@@ -13,7 +14,7 @@ const initialState: DataState = {
 
 export const fetchExercises = createAsyncThunk(
   'exercises/fetchExercises', async (url: string) => {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url);    
     return data;
   }
 )
@@ -22,7 +23,7 @@ export const dataSlice = createSlice({
   name: 'exercises',
   initialState,
   reducers: {
-    setExercises: (state, action: PayloadAction<any>) => {
+    setExercises: (state, action: PayloadAction<DataState>) => {
       state.exercises = action.payload;
     },
   },
@@ -30,15 +31,15 @@ export const dataSlice = createSlice({
     builder
       .addCase(fetchExercises.pending, (state) => {
         state.status = 'loading';
-        state.exercises = [];
+        state.exercises = {};
       })
-      .addCase(fetchExercises.fulfilled, (state, action) => {
+      .addCase(fetchExercises.fulfilled, (state, action: PayloadAction<DataState>) => {
         state.status = 'success';
         state.exercises = action.payload;
       })
       .addCase(fetchExercises.rejected, (state) => {
         state.status = 'error';
-        state.exercises = [];
+        state.exercises = {};
       })
   },
 })

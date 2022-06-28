@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styles from './ExerciseWrapper.module.scss';
 import MainButton from '../../../Buttons/MainButton/MainButton';
 import { RootState } from '../../../../redux/store';
@@ -8,44 +8,43 @@ import ExerciseSkeleton from '../../../Skeletons/ExerciseSkeleton/ExerciseSkelet
 import { IVideos } from '../../../../interfaces/VideosInterface';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 import { fetchExercises } from '../../../../redux/slices/dataSlice';
+import ExercisesFetchingError from '../../../Errors/ExercisesFetchingError/ExercisesFetchingError';
+import { url } from '../../../../shared/consts';
 
 
 const ExerciseWrapper: React.FC = () => {  
-  const API_TOKEN = '4bfcebd0-0216-4572-bdb7-939e9600b9b2';
-  const BASE_URL = `https://rnd.kilohealthservices.com/api/quizzes/workouts?api_token=${API_TOKEN}`;
   const dispatch = useAppDispatch();
   const status = useAppSelector((state: RootState) => state.data.status);
-  // const [videos, setVideos] = useState<IVideos[]>([]);
+  console.log('wrapper render');
   
-  const getExercises = async () => {
-    dispatch(fetchExercises(BASE_URL));
+  
+  // const [videos, setVideos] = useState<IVideos[]>([]);
 
-    // data.data.questions.forEach((category: any) => {
-    //   category.exercises.forEach((exercise: any) => {
-    //     const temp = {
-    //       id: exercise.id,
-    //       video: exercise.video,
-    //       photo: exercise.photo
-    //     }
-    //     setVideos((videos) => [...videos, temp]);
-    //   })
-    // })
-  }
+  // data.data.questions.forEach((category: any) => {
+  //   category.exercises.forEach((exercise: any) => {
+  //     const temp = {
+  //       id: exercise.id,
+  //       video: exercise.video,
+  //       photo: exercise.photo
+  //     }
+  //     setVideos((videos) => [...videos, temp]);
+  //   })
+  // })
 
   useEffect(() => {
-    getExercises();
+    dispatch(fetchExercises(url));
   }, []); 
-
-  console.log('wrapper render');
   
   return (
     <section className={styles.exerciseWrapperSection}>
       <div className="container">
         <div className={styles.exerciseWrapper}>
           {
-            status === 'loading' 
-              ? [...new Array(6)].map((_, index) => ( <ExerciseSkeleton key={index} /> )) 
-              : <ExerciseBlock />
+            status === 'error' 
+              ? <ExercisesFetchingError />
+              : status === 'loading' 
+                  ? [...new Array(6)].map((_, index) => <ExerciseSkeleton key={index} /> ) 
+                  : <ExerciseBlock />
           }
         </div>
 

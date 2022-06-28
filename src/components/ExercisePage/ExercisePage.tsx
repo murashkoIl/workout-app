@@ -25,6 +25,8 @@ const ExercisePage: React.FC = () => {
     dispatch(pauseHandler())
   }
   
+  console.log('exercisePage render');
+
   return (
     <section className={styles.exercisePageSection}>
       {/* <CompletePage type={faCheck} minutes={25}/> */}
@@ -40,7 +42,7 @@ const ExercisePage: React.FC = () => {
         <div className={styles.controlPanel}>
           <SwitchButton type={faCircleArrowLeft}/>
 
-          <Timer time={10} />
+          <Timer time={30} />
 
           <SwitchButton type={faCircleArrowRight}/>
         </div>

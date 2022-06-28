@@ -16,6 +16,9 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
  useEffect(() => {
    dispatch(setTimer(time));
    dispatch(toggleActive());
+   return () => {
+    dispatch(toggleActive());
+   }
  }, []);
 
  useEffect(() => {
@@ -31,9 +34,11 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
     dispatch(toggleActive());
     clearInterval(interval);
   }
-  return () => clearInterval(interval);
+  return () => {
+    clearInterval(interval);
+  };
  }, [timer]);
-  
+
   return (
     <div>
       Timer {timer !== 0 ? timer : 'success'}
