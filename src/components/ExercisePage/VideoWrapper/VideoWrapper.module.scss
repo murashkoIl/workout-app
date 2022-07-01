@@ -1,0 +1,48 @@
+.exercisePageSection {
+  text-align: center;
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.goback {
+  text-align: left;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+.title {
+  
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.controlPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.imgWrapper {
+  text-align: center;
+  margin-top: 2rem;
+
+  img {
+    max-width: 100%;
+    max-height: 420px;
+  }
+}
+
+.playPauseSection {
+  position: fixed;
+  bottom: 1rem;
+  width: calc(100vw - 2rem);
+  max-width: 56.25rem;
+}
+
+.videoWrapper {
+  margin-top: 2rem;
+}

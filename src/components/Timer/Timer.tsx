@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { setTimer, timerTick, toggleActive } from '../../redux/slices/timerSlice';
 import { RootState } from '../../redux/store';
+import { setIsGetReady } from '../../redux/slices/exercisesSlice';
 
 type TimerProps = {
   time: number
@@ -13,7 +14,7 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
   const timer = useAppSelector((state: RootState) => state.timer.time);
   const isTimerActive = useAppSelector((state: RootState) => state.timer.isTimerActive);
 
- useEffect(() => {
+ useEffect(() => {   
    dispatch(setTimer(time));
    dispatch(toggleActive());
    return () => {
@@ -24,16 +25,19 @@ const Timer: React.FC<TimerProps> = ({ time }) => {
  useEffect(() => {
    let interval: any  = null;
 
-   if (!timer) return;
+   if (isTimerActive && !timer && time === 5) {
+    dispatch(setIsGetReady());
+   }
+
+   if (isTimerActive && !timer) {
+      return;
+   }
 
    if (isTimerActive) {
     interval = setInterval(() => {
       dispatch(timerTick());
     }, 1000);
-  } else if (isTimerActive && !timer) {
-    dispatch(toggleActive());
-    clearInterval(interval);
-  }
+   } 
   return () => {
     clearInterval(interval);
   };

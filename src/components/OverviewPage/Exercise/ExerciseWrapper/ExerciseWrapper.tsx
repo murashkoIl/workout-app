@@ -7,7 +7,7 @@ import ExerciseBlock from '../ExerciseBlock/ExerciseBlock';
 import ExerciseSkeleton from '../../../Skeletons/ExerciseSkeleton/ExerciseSkeleton';
 import { IVideos } from '../../../../interfaces/VideosInterface';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
-import { fetchExercises } from '../../../../redux/slices/dataSlice';
+import { fetchExercises, setExerciseCards } from '../../../../redux/slices/dataSlice';
 import ExercisesFetchingError from '../../../Errors/ExercisesFetchingError/ExercisesFetchingError';
 import { url } from '../../../../shared/consts';
 
@@ -15,24 +15,13 @@ import { url } from '../../../../shared/consts';
 const ExerciseWrapper: React.FC = () => {  
   const dispatch = useAppDispatch();
   const status = useAppSelector((state: RootState) => state.data.status);
-  console.log('wrapper render');
-  
-  
-  // const [videos, setVideos] = useState<IVideos[]>([]);
-
-  // data.data.questions.forEach((category: any) => {
-  //   category.exercises.forEach((exercise: any) => {
-  //     const temp = {
-  //       id: exercise.id,
-  //       video: exercise.video,
-  //       photo: exercise.photo
-  //     }
-  //     setVideos((videos) => [...videos, temp]);
-  //   })
-  // })
 
   useEffect(() => {
-    dispatch(fetchExercises(url));
+    dispatch(fetchExercises(url))
+      .then(()=>{
+        dispatch(setExerciseCards());
+      })
+      .catch(err => alert(err));
   }, []); 
   
   return (

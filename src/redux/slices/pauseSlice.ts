@@ -5,7 +5,7 @@ export interface PauseState {
 }
 
 const initialState: PauseState = {
-  isPause: true,
+  isPause: false,
 }
 
 export const pauseSlice = createSlice({

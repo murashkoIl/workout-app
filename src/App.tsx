@@ -5,10 +5,6 @@ import Overview from './components/OverviewPage/OverviewPage';
 import ExercisePage from './components/ExercisePage/ExercisePage';
 
 const App: React.FC = () => {
-
-  console.log('app render');
-  
-
   return (
     <BrowserRouter>
       <div className="App">
