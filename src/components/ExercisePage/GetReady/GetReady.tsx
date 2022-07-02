@@ -7,7 +7,7 @@ const GetReady: React.FC<VideoWrapperProps> = ({ card }) => {
   return (
     <div>
       <div className="title">{card.title}</div>
-      <Timer time={5} />
+      <Timer duration={5} />
       <div className={styles.imgWrapper}>
           <img src={card.photo} alt="exercise" />
         </div>

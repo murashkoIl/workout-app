@@ -45,6 +45,14 @@ export const dataSlice = createSlice({
             }]
           })
         });
+    },
+
+    incrementExerciseCounter: (state) => {
+      state.exerciseCounter += 1;
+    },
+
+    decrementExerciseCounter: (state) => {
+      state.exerciseCounter -= 1;
     }
   },
   extraReducers: (builder) => {
@@ -65,6 +73,6 @@ export const dataSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setExercises, setExerciseCards } = dataSlice.actions
+export const { setExercises, setExerciseCards, decrementExerciseCounter, incrementExerciseCounter } = dataSlice.actions
 
 export default dataSlice.reducer

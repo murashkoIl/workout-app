@@ -8,32 +8,45 @@ import Video from '../../VideoBlock/Video/Video';
 import Divider from '../../Divider/Divider';
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks/hooks';
 import { RootState } from '../../../redux/store';
-import { pauseHandler } from '../../../redux/slices/pauseSlice';
+import { pauseHandler, setPauseUnActive } from '../../../redux/slices/pauseSlice';
 import PlayStopButton from '../../Buttons/PlayStopButton/PlayStopButton';
 import { faArrowLeftLong, faCircleArrowLeft, faCircleArrowRight, faPlay, faPause, faCheck  } from '@fortawesome/free-solid-svg-icons';
 import styles from './VideoWrapper.module.scss';
 import { VideoWrapperProps } from '../../../types/types';
+import { toggleActive } from '../../../redux/slices/timerSlice';
+import { decrementExerciseCounter, incrementExerciseCounter } from '../../../redux/slices/dataSlice';
+import { setIsGetReady } from '../../../redux/slices/exercisesSlice';
 
 const VideoWrapper: React.FC<VideoWrapperProps> = ({ card }) => {
-
   const isPause = useAppSelector((state: RootState) => state.pause.isPause);
   const dispatch = useAppDispatch();
   
   const videoRef = createRef<any>(); // fix any type and add this line to useEffect mb 
 
   const handlePlayPauseButtonCLick = (): void => {
-    // останавливать и воспроизводить видео
-    // останавливать таймер
-    dispatch(pauseHandler())
+    dispatch(toggleActive());
+    dispatch(pauseHandler());
     !isPause ? videoRef.current.pause() : videoRef.current.play();
-  }  
+  }
 
+  const handleLeftArrawClick = () => {
+    dispatch(decrementExerciseCounter());
+    dispatch(setIsGetReady());
+    dispatch(setPauseUnActive());
+  }
+
+  const handleRightArrawClick = () => {
+    dispatch(incrementExerciseCounter());
+    dispatch(setIsGetReady());
+    dispatch(setPauseUnActive());
+  }
+    
   return (
     <section className={styles.exercisePageSection}>
       {/* <CompletePage type={faCheck} minutes={25}/> */}
       <div className="container">
         <div className={styles.goback}>
-          <Link to="/">
+          <Link onClick={() => dispatch(setIsGetReady())} to="/">
             {<FontAwesomeIcon icon={faArrowLeftLong} />} Go Back
           </Link>
         </div>
@@ -41,11 +54,11 @@ const VideoWrapper: React.FC<VideoWrapperProps> = ({ card }) => {
         <div className="title">{card.title}</div>
 
         <div className={styles.controlPanel}>
-          <SwitchButton type={faCircleArrowLeft}/>
+          <SwitchButton render={handleLeftArrawClick} type={faCircleArrowLeft}/>
 
-          <Timer time={card.duration} />
+          <Timer duration={card.duration} />
 
-          <SwitchButton type={faCircleArrowRight}/>
+          <SwitchButton render={handleRightArrawClick} type={faCircleArrowRight}/>
         </div>
 
         <div className={styles.videoWrapper}>

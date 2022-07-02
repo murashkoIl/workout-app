@@ -22,13 +22,21 @@ export const timerSlice = createSlice({
       state.time -= 1;
     },
 
+    setTimerActive: (state) => {
+      state.isTimerActive = true;
+    },
+
+    setTimerUnActive: (state) => {
+      state.isTimerActive = false;
+    },
+
     toggleActive: (state) => {
-      state.isTimerActive = !state.isTimerActive
+      state.isTimerActive = !state.isTimerActive;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setTimer, timerTick, toggleActive } = timerSlice.actions
+export const { setTimer, timerTick, setTimerActive, setTimerUnActive, toggleActive } = timerSlice.actions
 
 export default timerSlice.reducer

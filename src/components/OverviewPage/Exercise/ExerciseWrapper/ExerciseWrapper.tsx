@@ -5,7 +5,6 @@ import MainButton from '../../../Buttons/MainButton/MainButton';
 import { RootState } from '../../../../redux/store';
 import ExerciseBlock from '../ExerciseBlock/ExerciseBlock';
 import ExerciseSkeleton from '../../../Skeletons/ExerciseSkeleton/ExerciseSkeleton';
-import { IVideos } from '../../../../interfaces/VideosInterface';
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hooks';
 import { fetchExercises, setExerciseCards } from '../../../../redux/slices/dataSlice';
 import ExercisesFetchingError from '../../../Errors/ExercisesFetchingError/ExercisesFetchingError';
