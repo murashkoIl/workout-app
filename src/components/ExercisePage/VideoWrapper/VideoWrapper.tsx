@@ -10,12 +10,14 @@ import { useAppSelector, useAppDispatch } from '../../../redux/hooks/hooks';
 import { RootState } from '../../../redux/store';
 import { pauseHandler, setPauseUnActive } from '../../../redux/slices/pauseSlice';
 import PlayStopButton from '../../Buttons/PlayStopButton/PlayStopButton';
-import { faArrowLeftLong, faCircleArrowLeft, faCircleArrowRight, faPlay, faPause, faCheck  } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faCircleArrowLeft, faCircleArrowRight, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import styles from './VideoWrapper.module.scss';
 import { VideoWrapperProps } from '../../../types/types';
 import { toggleActive } from '../../../redux/slices/timerSlice';
 import { decrementExerciseCounter, incrementExerciseCounter } from '../../../redux/slices/dataSlice';
 import { setIsGetReady } from '../../../redux/slices/exercisesSlice';
+
+// faCheck
 
 const VideoWrapper: React.FC<VideoWrapperProps> = ({ card }) => {
   const isPause = useAppSelector((state: RootState) => state.pause.isPause);
