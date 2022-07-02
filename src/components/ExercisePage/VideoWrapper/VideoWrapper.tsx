@@ -1,81 +1,46 @@
 import React, { createRef } from 'react'
-import Timer from '../../Timer/Timer';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SwitchButton from '../../Buttons/SwitchButton/SwitchButton';
-import VideoBlock from '../../VideoBlock/VideoBlock';
-import Video from '../../VideoBlock/Video/Video';
-import Divider from '../../Divider/Divider';
-import { useAppSelector, useAppDispatch } from '../../../redux/hooks/hooks';
-import { RootState } from '../../../redux/store';
-import { pauseHandler, setPauseUnActive } from '../../../redux/slices/pauseSlice';
-import PlayStopButton from '../../Buttons/PlayStopButton/PlayStopButton';
-import { faArrowLeftLong, faCircleArrowLeft, faCircleArrowRight, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
-import styles from './VideoWrapper.module.scss';
+import VideoBlock from './VideoBlock/VideoBlock';
+import { useAppDispatch } from '../../../redux/hooks/hooks';
+import { setPauseUnActive } from '../../../redux/slices/pauseSlice';
 import { VideoWrapperProps } from '../../../types/types';
-import { toggleActive } from '../../../redux/slices/timerSlice';
-import { decrementExerciseCounter, incrementExerciseCounter } from '../../../redux/slices/dataSlice';
+import { decrementExerciseCounter, incrementExerciseCounter, setExercisesDone } from '../../../redux/slices/dataSlice';
 import { setIsGetReady } from '../../../redux/slices/exercisesSlice';
+import styles from './VideoWrapper.module.scss';
+import GoBack from './GoBack/GoBack';
+import VideoControls from './VideoControls/VideoControls';
+import PauseSection from './PauseSection/PauseSection';
 
 // faCheck
 
 const VideoWrapper: React.FC<VideoWrapperProps> = ({ card }) => {
-  const isPause = useAppSelector((state: RootState) => state.pause.isPause);
   const dispatch = useAppDispatch();
-  
   const videoRef = createRef<any>(); // fix any type and add this line to useEffect mb 
 
-  const handlePlayPauseButtonCLick = (): void => {
-    dispatch(toggleActive());
-    dispatch(pauseHandler());
-    !isPause ? videoRef.current.pause() : videoRef.current.play();
-  }
-
-  const handleLeftArrawClick = () => {
-    dispatch(decrementExerciseCounter());
+  const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+    if ((e.target as Element).closest('.fa-circle-arrow-right')) {
+      dispatch(incrementExerciseCounter());
+      dispatch(setExercisesDone(card.id));
+    } else {
+      dispatch(decrementExerciseCounter());
+    }
     dispatch(setIsGetReady());
     dispatch(setPauseUnActive());
   }
 
-  const handleRightArrawClick = () => {
-    dispatch(incrementExerciseCounter());
+  const handleGoBackCLick = () => {
     dispatch(setIsGetReady());
-    dispatch(setPauseUnActive());
+    dispatch(setPauseUnActive())
   }
     
   return (
     <section className={styles.exercisePageSection}>
       {/* <CompletePage type={faCheck} minutes={25}/> */}
       <div className="container">
-        <div className={styles.goback}>
-          <Link onClick={() => dispatch(setIsGetReady())} to="/">
-            {<FontAwesomeIcon icon={faArrowLeftLong} />} Go Back
-          </Link>
-        </div>
+        <GoBack handleGoBackCLick={handleGoBackCLick}/>
+        <VideoControls title={card.title} duration={card.duration} handleArrowClick={handleArrowClick} />
+        <VideoBlock video={card.video} videoRef={videoRef} />
+        <PauseSection videoRef={videoRef} />
 
-        <div className="title">{card.title}</div>
-
-        <div className={styles.controlPanel}>
-          <SwitchButton render={handleLeftArrawClick} type={faCircleArrowLeft}/>
-
-          <Timer duration={card.duration} />
-
-          <SwitchButton render={handleRightArrawClick} type={faCircleArrowRight}/>
-        </div>
-
-        <div className={styles.videoWrapper}>
-          <VideoBlock>
-            <Video videoRef={videoRef} video={card.video}/>
-            {/* <Pause /> */}
-          </VideoBlock>
-        </div>
-
-        <div className={styles.playPauseSection}>
-          <Divider />
-          <div className="playStopWrapper">
-            <PlayStopButton buttonClick={handlePlayPauseButtonCLick} type={isPause ? faPlay : faPause}/>
-          </div>
-        </div>
       </div>
     </section>
   )

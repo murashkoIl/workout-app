@@ -7,7 +7,7 @@ type VideoProps = {
 }
 
 const Video: React.FC<VideoProps> = ({ videoRef, video }) => {  
-
+  
   return (
     <div className={styles.videoWrapper}>
       <video autoPlay ref={videoRef} loop>

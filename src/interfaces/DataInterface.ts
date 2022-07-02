@@ -22,4 +22,5 @@ export interface IExercises {
   photo: string
   title: string
   video: string
+  isDone: boolean
 }

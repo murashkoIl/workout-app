@@ -6,7 +6,7 @@ import VideoWrapper from './VideoWrapper/VideoWrapper';
 
 const ExercisePage: React.FC = () => {
   const isGetReady = useAppSelector((state: RootState) => state.exercises.isGetReady);
-  const { exerciseCards, exerciseCounter } = useAppSelector((state: RootState) => state.data);
+  const { exerciseCards, exerciseCounter } = useAppSelector((state: RootState) => state.data);  
   
   return (
     <>

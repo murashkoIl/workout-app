@@ -4,4 +4,5 @@ export interface IExerciseCard {
   video: string
   id: number
   duration: number
+  isDone: boolean
 }

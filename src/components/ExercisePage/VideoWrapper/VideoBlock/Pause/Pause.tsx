@@ -1,5 +1,5 @@
 import React from 'react'
-import MainButton from '../../Buttons/MainButton/MainButton';
+import MainButton from '../../../../Buttons/MainButton/MainButton';
 import styles from './Pause.module.scss';
 
 const Pause: React.FC = () => {

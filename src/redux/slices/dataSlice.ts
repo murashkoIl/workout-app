@@ -41,10 +41,19 @@ export const dataSlice = createSlice({
               photo: item.photo,
               video: item.video,
               id: item.id,
-              duration: item.duration 
+              duration: item.duration,
+              isDone: false
             }]
           })
         });
+    },
+
+    setExercisesDone: (state, action: PayloadAction<number>) => {
+      state.exerciseCards.forEach((item: IExerciseCard) => {
+        if (item.id === action.payload) {
+          item.isDone = true;
+        } 
+      });
     },
 
     incrementExerciseCounter: (state) => {
@@ -73,6 +82,6 @@ export const dataSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setExercises, setExerciseCards, decrementExerciseCounter, incrementExerciseCounter } = dataSlice.actions
+export const { setExercises, setExerciseCards, decrementExerciseCounter, incrementExerciseCounter, setExercisesDone } = dataSlice.actions
 
 export default dataSlice.reducer

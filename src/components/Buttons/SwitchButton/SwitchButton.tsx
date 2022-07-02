@@ -4,13 +4,13 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import styles from './SwitchButton.module.scss';
 
 type SwitchButtonProps = {
-  render: () => void
+  render: (event: React.MouseEvent<Element, MouseEvent>) => void
   type: IconDefinition
 }
 
 const SwitchButton: React.FC<SwitchButtonProps> = ({ render, type }) => {
   return (
-    <div onClick={render} className={styles.switchButton}>
+    <div onClick={(e) => render(e)} className={styles.switchButton}>
       <FontAwesomeIcon icon={type} />
     </div>
   )

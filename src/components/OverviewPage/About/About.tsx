@@ -3,10 +3,7 @@ import styles from './About.module.scss';
 import main from '../../../images/main.jpeg';
 
 const About: React.FC = () => {
-
-  console.log('about render');
   
-
   return (
     <section className="aboutSection">
       <div className="container">

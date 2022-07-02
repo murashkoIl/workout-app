@@ -2,12 +2,13 @@ import React from 'react'
 import styles from './ExerciseCard.module.scss';
 
 type ExerciseCardProps = {
+  id: number
   img: string,
   title: string,
   duration: number,
 }
 
-const ExerciseCard: React.FC<ExerciseCardProps> = ({ img, title, duration }) => {
+const ExerciseCard: React.FC<ExerciseCardProps> = ({ id, img, title, duration }) => {
   return (
     <div className={styles.exerciseCard}>
       <div className={styles.exerciseImage}>
