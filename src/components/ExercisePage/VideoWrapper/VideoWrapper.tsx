@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+// import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import VideoBlock from "./VideoBlock/VideoBlock";
 import { useAppDispatch } from "../../../redux/hooks/hooks";
 import { setPauseUnActive } from "../../../redux/slices/pauseSlice";
@@ -15,7 +15,7 @@ import GoBack from "./GoBack/GoBack";
 import VideoControls from "./VideoControls/VideoControls";
 import PauseSection from "./PauseSection/PauseSection";
 
-import CompletePage from "../../CompletePage/CompletePage";
+// import CompletePage from "../../CompletePage/CompletePage";
 
 // faCheck
 
@@ -41,7 +41,7 @@ function VideoWrapper({ card }: VideoWrapperProps) {
 
   return (
     <section className={styles.exercisePageSection}>
-      <CompletePage type={faCheck} minutes={25} />
+      {/* <CompletePage type={faCheck} minutes={25} /> */}
       <div className="container">
         <GoBack handleGoBackCLick={handleGoBackCLick} />
         <VideoControls

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
@@ -8,6 +9,10 @@ import {
 } from "../../redux/slices/timerSlice";
 import { RootState } from "../../redux/store";
 import { setIsGetReady } from "../../redux/slices/exercisesSlice";
+import {
+  incrementExerciseCounter,
+  setExercisesDone,
+} from "../../redux/slices/dataSlice";
 
 type TimerProps = {
   duration: number;
@@ -15,12 +20,15 @@ type TimerProps = {
 
 function Timer({ duration }: TimerProps) {
   const { time, isTimerActive } = useAppSelector(
-    // eslint-disable-next-line prettier/prettier
     (state: RootState) => state.timer,
   );
+  const isGetReady = useAppSelector(
+    (state: RootState) => state.exercises.isGetReady,
+  );
+  const { exerciseCards, exerciseCounter } = useAppSelector(
+    (state: RootState) => state.data,
+  );
   const dispatch = useAppDispatch();
-
-  console.log("Timer render");
 
   useEffect(() => {
     dispatch(setTimer(duration));
@@ -37,7 +45,14 @@ function Timer({ duration }: TimerProps) {
 
     if (isTimerActive) {
       interval = setInterval(() => {
-        if (isTimerActive && !time && duration === 5) {
+
+        if (!time && duration === 5) {
+          dispatch(setIsGetReady());
+        }
+
+        if (!isGetReady && !time) {
+          dispatch(setExercisesDone(exerciseCards[exerciseCounter].id));
+          dispatch(incrementExerciseCounter());
           dispatch(setIsGetReady());
         }
 
