@@ -1,4 +1,3 @@
-import React from "react";
 import { RootState } from "../../../../redux/store";
 import ExerciseCard from "../ExerciseCard/ExerciseCard";
 import Divider from "../../../Divider/Divider";
@@ -10,7 +9,8 @@ import { IExerciseCard } from "../../../../interfaces/ExerciseCardInterface";
 function ExerciseBlock() {
   const exercises = useAppSelector((state: RootState) => state.data.exercises);
   const exercisesCards = useAppSelector(
-    (state: RootState) => state.data.exerciseCards
+    // eslint-disable-next-line prettier/prettier
+    (state: RootState) => state.data.exerciseCards,
   );
 
   return (
@@ -26,7 +26,8 @@ function ExerciseBlock() {
                 isDone={
                   item.id ===
                   exercisesCards.find(
-                    (el: IExerciseCard) => el.id === item.id && el.isDone
+                    // eslint-disable-next-line prettier/prettier
+                    (el: IExerciseCard) => el.id === item.id && el.isDone,
                   )?.id
                     ? "done"
                     : "notDone"

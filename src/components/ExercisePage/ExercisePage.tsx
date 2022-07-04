@@ -6,10 +6,12 @@ import VideoWrapper from "./VideoWrapper/VideoWrapper";
 
 function ExercisePage() {
   const isGetReady = useAppSelector(
-    (state: RootState) => state.exercises.isGetReady
+    // eslint-disable-next-line prettier/prettier
+    (state: RootState) => state.exercises.isGetReady,
   );
   const { exerciseCards, exerciseCounter } = useAppSelector(
-    (state: RootState) => state.data
+    // eslint-disable-next-line prettier/prettier
+    (state: RootState) => state.data,
   );
 
   return (

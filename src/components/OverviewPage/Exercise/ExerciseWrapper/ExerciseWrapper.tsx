@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react-hooks/exhaustive-deps */
 import styles from "./ExerciseWrapper.module.scss";
 import MainButton from "../../../Buttons/MainButton/MainButton";
 import { RootState } from "../../../../redux/store";
@@ -11,7 +10,8 @@ import ExercisesFetchingError from "../../../Errors/ExercisesFetchingError/Exerc
 function ExerciseWrapper() {
   const status = useAppSelector((state: RootState) => state.data.status);
   const exerciseCounter = useAppSelector(
-    (state: RootState) => state.data.exerciseCounter
+    // eslint-disable-next-line prettier/prettier
+    (state: RootState) => state.data.exerciseCounter,
   );
 
   return (

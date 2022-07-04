@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
@@ -16,7 +15,8 @@ type TimerProps = {
 
 function Timer({ duration }: TimerProps) {
   const { time, isTimerActive } = useAppSelector(
-    (state: RootState) => state.timer
+    // eslint-disable-next-line prettier/prettier
+    (state: RootState) => state.timer,
   );
   const dispatch = useAppDispatch();
 
@@ -29,6 +29,7 @@ function Timer({ duration }: TimerProps) {
     return () => {
       dispatch(setTimerUnActive());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -54,6 +55,7 @@ function Timer({ duration }: TimerProps) {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTimerActive, time]);
 
   return <>Timer {time !== 0 ? time : ""}</>;

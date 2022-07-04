@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -23,7 +24,7 @@ export const fetchExercises = createAsyncThunk(
   async (url: string) => {
     const { data } = await axios.get(url);
     return data;
-  }
+  },
 );
 
 export const dataSlice = createSlice({
@@ -79,7 +80,7 @@ export const dataSlice = createSlice({
         (state, action: PayloadAction<DataState>) => {
           state.status = "success";
           state.exercises = action.payload;
-        }
+        },
       )
       .addCase(fetchExercises.rejected, (state) => {
         state.status = "error";
