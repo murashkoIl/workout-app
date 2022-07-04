@@ -46,11 +46,11 @@ function Timer({ duration }: TimerProps) {
     if (isTimerActive) {
       interval = setInterval(() => {
 
-        if (!time && duration === 5) {
+        if (time === 1 && duration === 5) {
           dispatch(setIsGetReady());
         }
 
-        if (!isGetReady && !time) {
+        if (!isGetReady && time === 1) {
           dispatch(setExercisesDone(exerciseCards[exerciseCounter].id));
           dispatch(incrementExerciseCounter());
           dispatch(setIsGetReady());
