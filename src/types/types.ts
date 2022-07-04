@@ -1,6 +1,5 @@
-import { IExerciseCard } from "../interfaces/ExerciseCardInterface"
-
+import { IExerciseCard } from "../interfaces/ExerciseCardInterface";
 
 export type VideoWrapperProps = {
-  card: IExerciseCard
-}
+  card: IExerciseCard;
+};

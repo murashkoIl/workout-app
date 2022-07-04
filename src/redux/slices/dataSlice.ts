@@ -1,32 +1,33 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { IData } from '../../interfaces/DataInterface';
-import { IExerciseCard } from '../../interfaces/ExerciseCardInterface';
-
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { IData } from "../../interfaces/DataInterface";
+import { IExerciseCard } from "../../interfaces/ExerciseCardInterface";
 
 interface DataState {
-  exercises: IData | any
-  status: string
-  exerciseCounter: number
-  exerciseCards: IExerciseCard[]
+  exercises: IData | any;
+  status: string;
+  exerciseCounter: number;
+  exerciseCards: IExerciseCard[];
 }
 
 const initialState: DataState = {
   exercises: {},
-  status: 'loading',
+  status: "loading",
   exerciseCounter: 0,
-  exerciseCards: []
-}
+  exerciseCards: [],
+};
 
 export const fetchExercises = createAsyncThunk(
-  'exercises/fetchExercises', async (url: string) => {
-    const { data } = await axios.get(url);    
+  "exercises/fetchExercises",
+  async (url: string) => {
+    const { data } = await axios.get(url);
     return data;
   }
-)
+);
 
 export const dataSlice = createSlice({
-  name: 'exercises',
+  name: "exercises",
   initialState,
   reducers: {
     setExercises: (state, action: PayloadAction<DataState>) => {
@@ -35,24 +36,27 @@ export const dataSlice = createSlice({
 
     setExerciseCards: (state) => {
       state.exercises.data?.questions.forEach((category: any) => {
-          category.exercises.forEach((item: any) => {
-            state.exerciseCards = [...state.exerciseCards, {
+        category.exercises.forEach((item: any) => {
+          state.exerciseCards = [
+            ...state.exerciseCards,
+            {
               title: item.title,
               photo: item.photo,
               video: item.video,
               id: item.id,
               duration: item.duration,
-              isDone: false
-            }]
-          })
+              isDone: false,
+            },
+          ];
         });
+      });
     },
 
     setExercisesDone: (state, action: PayloadAction<number>) => {
       state.exerciseCards.forEach((item: IExerciseCard) => {
         if (item.id === action.payload) {
           item.isDone = true;
-        } 
+        }
       });
     },
 
@@ -62,26 +66,35 @@ export const dataSlice = createSlice({
 
     decrementExerciseCounter: (state) => {
       state.exerciseCounter -= 1;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchExercises.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
         state.exercises = {};
       })
-      .addCase(fetchExercises.fulfilled, (state, action: PayloadAction<DataState>) => {
-        state.status = 'success';
-        state.exercises = action.payload;  
-      })
+      .addCase(
+        fetchExercises.fulfilled,
+        (state, action: PayloadAction<DataState>) => {
+          state.status = "success";
+          state.exercises = action.payload;
+        }
+      )
       .addCase(fetchExercises.rejected, (state) => {
-        state.status = 'error';
+        state.status = "error";
         state.exercises = {};
-      })
+      });
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { setExercises, setExerciseCards, decrementExerciseCounter, incrementExerciseCounter, setExercisesDone } = dataSlice.actions
+export const {
+  setExercises,
+  setExerciseCards,
+  decrementExerciseCounter,
+  incrementExerciseCounter,
+  setExercisesDone,
+} = dataSlice.actions;
 
-export default dataSlice.reducer
+export default dataSlice.reducer;

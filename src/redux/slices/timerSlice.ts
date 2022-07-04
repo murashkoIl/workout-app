@@ -1,17 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface TimerState {
-  time: number
-  isTimerActive: boolean
+  time: number;
+  isTimerActive: boolean;
 }
 
 const initialState: TimerState = {
   time: 0,
-  isTimerActive: false
-}
+  isTimerActive: false,
+};
 
 export const timerSlice = createSlice({
-  name: 'timer',
+  name: "timer",
   initialState,
   reducers: {
     setTimer: (state, action: PayloadAction<number>) => {
@@ -32,11 +33,17 @@ export const timerSlice = createSlice({
 
     toggleActive: (state) => {
       state.isTimerActive = !state.isTimerActive;
-    }
+    },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { setTimer, timerTick, setTimerActive, setTimerUnActive, toggleActive } = timerSlice.actions
+export const {
+  setTimer,
+  timerTick,
+  setTimerActive,
+  setTimerUnActive,
+  toggleActive,
+} = timerSlice.actions;
 
-export default timerSlice.reducer
+export default timerSlice.reducer;

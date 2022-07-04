@@ -15,6 +15,32 @@
       min-height: 6.5rem;
       border-radius: 10px;
     }
+
+    &Done {
+      position: relative;
+      border-radius: 10px;
+      max-width: 7rem;
+      min-height: 6.5rem;
+
+      img {
+        max-width: 7rem;
+        min-height: 6.5rem;
+        border-radius: 10px;
+        opacity: 0.2;
+      }
+
+      &::after {
+        content: '';
+        background: url('../../../../images/icons/check.svg') 0 0 no-repeat;
+        position: absolute;
+        top: 42px;
+        left: 46px;
+        width: 35px;
+        height: 35px;
+        z-index: 10;
+      }
+
+    }
   }
 
   &Info {

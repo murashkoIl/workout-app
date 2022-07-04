@@ -1,17 +1,20 @@
-import React from 'react'
-import styles from './ExerciseCard.module.scss';
+import styles from "./ExerciseCard.module.scss";
 
 type ExerciseCardProps = {
-  id: number
-  img: string,
-  title: string,
-  duration: number,
-}
+  img: string;
+  title: string;
+  duration: number;
+  isDone: string;
+};
 
-const ExerciseCard: React.FC<ExerciseCardProps> = ({ id, img, title, duration }) => {
+function ExerciseCard({ isDone, img, title, duration }: ExerciseCardProps) {
   return (
     <div className={styles.exerciseCard}>
-      <div className={styles.exerciseImage}>
+      <div
+        className={
+          isDone === "done" ? styles.exerciseImageDone : styles.exerciseImage
+        }
+      >
         <img src={img} alt="exercise" />
       </div>
       <div className={styles.exerciseInfo}>
@@ -19,7 +22,7 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({ id, img, title, duration })
         <div className={styles.exerciseInfoDuration}>{duration} sec</div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ExerciseCard;

@@ -1,19 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface PauseState {
-  isPause: boolean
+  isPause: boolean;
 }
 
 const initialState: PauseState = {
   isPause: false,
-}
+};
 
 export const pauseSlice = createSlice({
-  name: 'pause',
+  name: "pause",
   initialState,
   reducers: {
     pauseHandler: (state) => {
-      state.isPause = !state.isPause
+      state.isPause = !state.isPause;
     },
 
     setPauseActive: (state) => {
@@ -24,9 +25,10 @@ export const pauseSlice = createSlice({
       state.isPause = false;
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { pauseHandler, setPauseActive, setPauseUnActive } = pauseSlice.actions
+export const { pauseHandler, setPauseActive, setPauseUnActive } =
+  pauseSlice.actions;
 
-export default pauseSlice.reducer
+export default pauseSlice.reducer;

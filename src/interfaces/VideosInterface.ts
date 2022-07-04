@@ -1,5 +1,5 @@
 export interface IVideos {
-  id: number
-  video: string
-  photo: string
+  id: number;
+  video: string;
+  photo: string;
 }

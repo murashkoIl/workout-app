@@ -1,9 +1,7 @@
-import React from 'react'
-import styles from './About.module.scss';
-import main from '../../../images/main.jpeg';
+import styles from "./About.module.scss";
+import main from "../../../images/main.jpeg";
 
-const About: React.FC = () => {
-  
+function About() {
   return (
     <section className="aboutSection">
       <div className="container">
@@ -13,7 +11,7 @@ const About: React.FC = () => {
         <div className={styles.mainTitle}>Morning Flexibility Routine</div>
       </div>
     </section>
-  )
+  );
 }
 
 export default About;
