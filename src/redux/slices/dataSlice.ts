@@ -10,13 +10,15 @@ interface DataState {
   status: string;
   exerciseCounter: number;
   exerciseCards: IExerciseCard[];
+  exercisesDuration: number;
 }
 
 const initialState: DataState = {
   exercises: {},
   status: "loading",
-  exerciseCounter: 0,
+  exerciseCounter: 19,
   exerciseCards: [],
+  exercisesDuration: 0,
 };
 
 export const fetchExercises = createAsyncThunk(
@@ -61,6 +63,12 @@ export const dataSlice = createSlice({
       });
     },
 
+    calculateExercisesDuration: (state) => {
+      state.exercisesDuration = Math.round(state.exerciseCards.reduce((acc: number, item: IExerciseCard) => {
+        return acc + item.duration;
+      }, 0) / 60);
+    },
+
     incrementExerciseCounter: (state) => {
       state.exerciseCounter += 1;
     },
@@ -96,6 +104,7 @@ export const {
   decrementExerciseCounter,
   incrementExerciseCounter,
   setExercisesDone,
+  calculateExercisesDuration,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

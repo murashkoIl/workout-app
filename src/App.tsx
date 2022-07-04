@@ -4,7 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Overview from "./components/OverviewPage/OverviewPage";
 import ExercisePage from "./components/ExercisePage/ExercisePage";
-import { fetchExercises, setExerciseCards } from "./redux/slices/dataSlice";
+import {
+  calculateExercisesDuration,
+  fetchExercises,
+  setExerciseCards,
+} from "./redux/slices/dataSlice";
 import { useAppDispatch } from "./redux/hooks/hooks";
 import url from "./shared/consts";
 
@@ -15,6 +19,9 @@ function App() {
     dispatch(fetchExercises(url))
       .then(() => {
         dispatch(setExerciseCards());
+      })
+      .then(() => {
+        dispatch(calculateExercisesDuration());
       })
       .catch((err) => alert(err));
   }, []);

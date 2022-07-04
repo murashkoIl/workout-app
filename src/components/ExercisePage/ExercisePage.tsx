@@ -12,14 +12,14 @@ function ExercisePage() {
   const isGetReady = useAppSelector(
     (state: RootState) => state.exercises.isGetReady,
   );
-  const { exerciseCards, exerciseCounter } = useAppSelector(
+  const { exerciseCards, exerciseCounter, exercisesDuration } = useAppSelector(
     (state: RootState) => state.data,
   );
 
   return (
     <>
       {isGetReady && exerciseCounter === exerciseCards.length ? (
-        <CompletePage type={faCheck} minutes={25} />
+        <CompletePage type={faCheck} minutes={exercisesDuration} />
       ) : isGetReady ? (
         <GetReady card={exerciseCards[exerciseCounter]} />
       ) : (
