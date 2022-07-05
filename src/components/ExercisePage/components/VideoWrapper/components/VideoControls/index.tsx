@@ -6,6 +6,8 @@ import {
 import Timer from "../../../../../Timer";
 import SwitchButton from "../../../../../Buttons/SwitchButton";
 import styles from "./VideoControls.module.scss";
+import { useAppSelector } from "../../../../../../redux/hooks/hooks";
+import { RootState } from "../../../../../../redux/store";
 
 type VideoControlsProps = {
   title: string;
@@ -18,15 +20,23 @@ function VideoControls({
   duration,
   handleArrowClick,
 }: VideoControlsProps) {
+  const exerciseCounter = useAppSelector(
+    (state: RootState) => state.data.exerciseCounter,
+  );
+
   return (
     <>
       <div className="title">{title}</div>
 
       <div className={styles.controlPanel}>
-        <SwitchButton
-          render={(e) => handleArrowClick(e)}
-          type={faCircleArrowLeft}
-        />
+        {exerciseCounter !== 0 ? (
+          <SwitchButton
+            render={(e) => handleArrowClick(e)}
+            type={faCircleArrowLeft}
+          />
+        ) : (
+          <div />
+        )}
 
         <Timer duration={duration} />
 
