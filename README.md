@@ -29,5 +29,6 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 - Prettier
 - Husky
 - Scss
+- Netlify
 
 ## Folders structure
