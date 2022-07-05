@@ -14,14 +14,7 @@ function Video({ videoRef, video }: VideoProps) {
 
   return (
     <div className={isPause ? styles.videoWrapperPause : styles.videoWrapper}>
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        webkit-playinginline
-        ref={videoRef}
-      >
+      <video autoPlay loop muted playsInline ref={videoRef}>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

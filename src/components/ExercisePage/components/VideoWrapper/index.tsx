@@ -23,7 +23,7 @@ function VideoWrapper({ card }: VideoWrapperProps) {
   const dispatch = useAppDispatch();
   const videoRef = createRef<any>(); // fix any type and add this line to useEffect mb
 
-  const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
     if ((e.target as Element).closest(".fa-circle-arrow-right")) {
       dispatch(incrementExerciseCounter());
@@ -35,7 +35,7 @@ function VideoWrapper({ card }: VideoWrapperProps) {
     dispatch(setPauseUnActive());
   };
 
-  const handleGoBackCLick = () => {
+  const handleGoBackCLick = (): void => {
     dispatch(setIsGetReady());
     dispatch(setPauseUnActive());
   };

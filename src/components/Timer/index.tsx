@@ -33,10 +33,15 @@ function Timer({ duration, color }: TimerProps) {
   const dispatch = useAppDispatch();
   const timerRef = createRef<any>();
 
+  const handleAnimatedTimer = (): void => {
+    timerRef.current.style.strokeDashoffset = 380 + (380 * (60 / duration) * time) / 60;
+  }
+
   useEffect(() => {
     dispatch(setTimer(duration));
     dispatch(setTimerActive());
 
+    timerRef.current.style.stroke = color;
     return () => {
       dispatch(setTimerUnActive());
     };
@@ -45,9 +50,8 @@ function Timer({ duration, color }: TimerProps) {
 
   useEffect(() => {
     let interval: any = null;
-    
-    timerRef.current.style.strokeDashoffset = 380 + (380 * (60 / duration) * time) / 60;
-    timerRef.current.style.stroke = color;
+
+    handleAnimatedTimer();
 
     if (isTimerActive) {
       interval = setInterval(() => {
