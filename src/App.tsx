@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import Overview from "./components/OverviewPage/OverviewPage";
-import ExercisePage from "./components/ExercisePage/ExercisePage";
+import Overview from "./components/OverviewPage";
+import ExercisePage from "./components/ExercisePage";
 import {
   calculateExercisesDuration,
   fetchExercises,
