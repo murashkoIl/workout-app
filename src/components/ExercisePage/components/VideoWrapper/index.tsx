@@ -3,17 +3,21 @@ import React, { createRef } from "react";
 import VideoBlock from "./components/VideoBlock";
 import { useAppDispatch } from "../../../../redux/hooks/hooks";
 import { setPauseUnActive } from "../../../../redux/slices/pauseSlice";
-import { VideoWrapperProps } from "../../../../Types/types.js";
 import {
   decrementExerciseCounter,
   incrementExerciseCounter,
   setExercisesDone,
 } from "../../../../redux/slices/dataSlice";
 import { setIsGetReady } from "../../../../redux/slices/pagesSlice";
+import { IExerciseCard } from "../../../../interfaces/ExerciseCardInterface";
 import styles from "./VideoWrapper.module.scss";
 import GoBack from "./components/GoBack";
 import VideoControls from "./components/VideoControls";
 import PauseSection from "./components/PauseSection";
+
+type VideoWrapperProps = {
+  card: IExerciseCard;
+};
 
 function VideoWrapper({ card }: VideoWrapperProps) {
   const dispatch = useAppDispatch();

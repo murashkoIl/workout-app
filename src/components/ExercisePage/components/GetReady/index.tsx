@@ -1,6 +1,10 @@
-import { VideoWrapperProps } from "../../../../Types/types.js";
+import { IExerciseCard } from "../../../../interfaces/ExerciseCardInterface";
 import Timer from "../../../Timer";
 import styles from "./GetReady.module.scss";
+
+type VideoWrapperProps = {
+  card: IExerciseCard;
+};
 
 function GetReady({ card }: VideoWrapperProps) {
   return (
