@@ -10,14 +10,8 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 
 ```
 1. git clone https://github.com/murashkoIl/workout-app.git
-```
-```
 2. cd workout-app
-```
-```
 3. npm install
-```
-```
 4. npm start
 ```
 
@@ -35,6 +29,5 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 - Prettier
 - Husky
 - Scss
-- 
 
 ## Folders structure
