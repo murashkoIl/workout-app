@@ -46,6 +46,7 @@
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
+    "@typescript-eslint/ban-ts-comment": "off",
     "no-shadow": "off"
   }
 }

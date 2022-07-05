@@ -1,4 +1,5 @@
-import { VideoWrapperProps } from "../../../../Types/types.js";
+// eslint-disable-next-line import/extensions
+import { VideoWrapperProps } from "../../../../Types/types";
 import Timer from "../../../Timer";
 import styles from "./GetReady.module.scss";
 
