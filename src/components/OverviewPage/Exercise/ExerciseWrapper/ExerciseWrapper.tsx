@@ -21,6 +21,7 @@ function ExerciseWrapper() {
   useEffect(() => {
     dispatch(setIsGetReady());
     dispatch(setPauseUnActive());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -23,6 +23,7 @@ function App() {
       .then(() => {
         dispatch(calculateExercisesDuration());
       })
+      // eslint-disable-next-line no-alert
       .catch((err) => alert(err));
   }, []);
 
