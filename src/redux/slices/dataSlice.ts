@@ -16,7 +16,7 @@ interface DataState {
 const initialState: DataState = {
   exercises: {},
   status: "loading",
-  exerciseCounter: 19,
+  exerciseCounter: 0,
   exerciseCards: [],
   exercisesDuration: 0,
 };

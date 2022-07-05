@@ -2,14 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import pauseReducer from "./slices/pauseSlice";
 import timerReducer from "./slices/timerSlice";
 import dataReducer from "./slices/dataSlice";
-import exercisesReducer from "./slices/exercisesSlice";
+import pagesReducer from "./slices/pagesSlice";
 
 export const store = configureStore({
   reducer: {
     pause: pauseReducer,
     timer: timerReducer,
     data: dataReducer,
-    exercises: exercisesReducer,
+    exercises: pagesReducer,
   },
 });
 

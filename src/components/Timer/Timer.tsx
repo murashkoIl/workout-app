@@ -8,7 +8,7 @@ import {
   setTimerUnActive,
 } from "../../redux/slices/timerSlice";
 import { RootState } from "../../redux/store";
-import { setIsGetReady } from "../../redux/slices/exercisesSlice";
+import { setIsGetReady, setNotGetReady } from "../../redux/slices/pagesSlice";
 import {
   incrementExerciseCounter,
   setExercisesDone,
@@ -47,7 +47,7 @@ function Timer({ duration }: TimerProps) {
       interval = setInterval(() => {
 
         if (time === 1 && duration === 5) {
-          dispatch(setIsGetReady());
+          dispatch(setNotGetReady());
         }
 
         if (!isGetReady && time === 1) {

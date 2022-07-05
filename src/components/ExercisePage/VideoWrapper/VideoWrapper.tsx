@@ -8,7 +8,7 @@ import {
   incrementExerciseCounter,
   setExercisesDone,
 } from "../../../redux/slices/dataSlice";
-import { setIsGetReady } from "../../../redux/slices/exercisesSlice";
+import { setIsGetReady } from "../../../redux/slices/pagesSlice";
 import styles from "./VideoWrapper.module.scss";
 import GoBack from "./GoBack/GoBack";
 import VideoControls from "./VideoControls/VideoControls";
