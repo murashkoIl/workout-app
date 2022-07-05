@@ -8,9 +8,9 @@ type VideoWrapperProps = {
 
 function GetReady({ card }: VideoWrapperProps) {
   return (
-    <div>
-      <div className="title">{card.title}</div>
-      <Timer duration={5} />
+    <div className={styles.wrapper}>
+      <div className={styles.title}>{card.title}</div>
+      <Timer color="#ff2972" duration={5} />
       <div className={styles.imgWrapper}>
         <img src={card.photo} alt="exercise" />
       </div>

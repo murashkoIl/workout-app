@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useEffect } from "react";
+import { createRef, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import {
   setTimer,
@@ -13,12 +13,14 @@ import {
   incrementExerciseCounter,
   setExercisesDone,
 } from "../../redux/slices/dataSlice";
+import styles from "./Timer.module.scss";
 
 type TimerProps = {
   duration: number;
+  color: string
 };
 
-function Timer({ duration }: TimerProps) {
+function Timer({ duration, color }: TimerProps) {
   const { time, isTimerActive } = useAppSelector(
     (state: RootState) => state.timer,
   );
@@ -29,6 +31,7 @@ function Timer({ duration }: TimerProps) {
     (state: RootState) => state.data,
   );
   const dispatch = useAppDispatch();
+  const timerRef = createRef<any>();
 
   useEffect(() => {
     dispatch(setTimer(duration));
@@ -42,10 +45,12 @@ function Timer({ duration }: TimerProps) {
 
   useEffect(() => {
     let interval: any = null;
+    
+    timerRef.current.style.strokeDashoffset = 380 + (380 * (60 / duration) * time) / 60;
+    timerRef.current.style.stroke = color;
 
     if (isTimerActive) {
       interval = setInterval(() => {
-
         if (time === 1 && duration === 5) {
           dispatch(setNotGetReady());
         }
@@ -73,7 +78,17 @@ function Timer({ duration }: TimerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTimerActive, time]);
 
-  return <>Timer {time !== 0 ? time : ""}</>;
+  return (
+    <div id={styles.time}>
+      <div className={styles.circle}>
+        <svg>
+          <circle cx="60" cy="60" r="60" />
+          <circle ref={timerRef} className={styles.ss} cx="60" cy="60" r="60" />
+        </svg>
+        <div id={styles.seconds}>{time !== 0 ? time : ""}</div>
+      </div>
+    </div>
+  );
 }
 
 export default Timer;

@@ -4,22 +4,18 @@
     z-index: 15;
     width: 100%;
     left: 0;
-    top: 40%;
+    top: 25rem;
 
-    @media (max-width: 590px) {
-      top: 35%;
+    @media (max-width: 630px) {
+      top: 23rem;
     }
 
-    @media (max-width: 500px) {
-      top: 33%;
+    @media (max-width: 520px) {
+      top: 21rem;
     }
 
-    @media (max-width: 440px) {
-      top: 30%;
-    }
-
-    @media (max-width: 370px) {
-      top: 28%;
+    @media (max-width: 450px) {
+      top: 19rem;
     }
   }
 

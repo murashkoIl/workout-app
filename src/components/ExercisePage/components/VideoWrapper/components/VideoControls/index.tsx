@@ -26,7 +26,7 @@ function VideoControls({
 
   return (
     <>
-      <div className="title">{title}</div>
+      <div className={styles.title}>{title}</div>
 
       <div className={styles.controlPanel}>
         {exerciseCounter !== 0 ? (
@@ -35,10 +35,10 @@ function VideoControls({
             type={faCircleArrowLeft}
           />
         ) : (
-          <div />
+          <div className={styles.div} />
         )}
 
-        <Timer duration={duration} />
+        <Timer color="#04fc43" duration={duration} />
 
         <SwitchButton
           render={(e) => handleArrowClick(e)}
