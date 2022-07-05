@@ -10,6 +10,8 @@ type SwitchButtonProps = {
   type: IconDefinition;
 };
 
+// prevent default
+
 function SwitchButton({ render, type }: SwitchButtonProps) {
   return (
     <div onClick={(e) => render(e)} className={styles.switchButton}>

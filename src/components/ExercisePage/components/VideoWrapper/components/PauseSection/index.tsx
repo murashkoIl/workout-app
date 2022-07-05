@@ -19,7 +19,10 @@ function PauseSection({ videoRef }: PauseSectionProps) {
   const dispatch = useAppDispatch();
   const isPause = useAppSelector((state: RootState) => state.pause.isPause);
 
-  const handlePlayPauseButtonCLick = (): void => {
+  const handlePlayPauseButtonCLick = (
+    e: React.MouseEvent<Element, MouseEvent>,
+  ): void => {
+    e.preventDefault();
     dispatch(toggleActive());
     dispatch(pauseHandler());
     !isPause ? videoRef.current.pause() : videoRef.current.play();
@@ -30,7 +33,9 @@ function PauseSection({ videoRef }: PauseSectionProps) {
       <Divider />
       <div className="playStopWrapper">
         <PlayStopButton
-          buttonClick={handlePlayPauseButtonCLick}
+          buttonClick={(e: React.MouseEvent<Element, MouseEvent>) =>
+            handlePlayPauseButtonCLick(e)
+          }
           type={isPause ? faPlay : faPause}
         />
       </div>

@@ -6,7 +6,7 @@ import styles from "./PlayStopButton.module.scss";
 
 type PlayStopButtonProps = {
   type: IconDefinition;
-  buttonClick: () => void;
+  buttonClick: (e: React.MouseEvent<Element, MouseEvent>) => void;
 };
 
 function PlayStopButton({ type, buttonClick }: PlayStopButtonProps) {
