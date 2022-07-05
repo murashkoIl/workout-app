@@ -1,4 +1,4 @@
-import { VideoWrapperProps } from "../../../../Types/types";
+import { VideoWrapperProps } from "../../../../Types/types.js";
 import Timer from "../../../Timer";
 import styles from "./GetReady.module.scss";
 

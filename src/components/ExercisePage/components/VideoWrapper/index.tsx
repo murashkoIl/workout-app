@@ -1,8 +1,9 @@
+/* eslint-disable import/extensions */
 import React, { createRef } from "react";
 import VideoBlock from "./components/VideoBlock";
 import { useAppDispatch } from "../../../../redux/hooks/hooks";
 import { setPauseUnActive } from "../../../../redux/slices/pauseSlice";
-import { VideoWrapperProps } from "../../../../Types/types";
+import { VideoWrapperProps } from "../../../../Types/types.js";
 import {
   decrementExerciseCounter,
   incrementExerciseCounter,
