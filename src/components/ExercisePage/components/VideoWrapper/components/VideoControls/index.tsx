@@ -38,7 +38,7 @@ function VideoControls({
           <div className={styles.div} />
         )}
 
-        <Timer color="#04fc43" duration={duration} />
+        <Timer color="#1DE9B6" duration={duration} />
 
         <SwitchButton
           render={(e) => handleArrowClick(e)}
