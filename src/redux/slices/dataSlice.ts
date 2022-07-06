@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IData } from "../../interfaces/DataInterface";
+import { IData, IQuestions } from "../../interfaces/DataInterface";
 import { IExerciseCard } from "../../interfaces/ExerciseCardInterface";
 
 interface DataState {
@@ -38,8 +38,8 @@ export const dataSlice = createSlice({
     },
 
     setExerciseCards: (state) => {
-      state.exercises.data?.questions.forEach((category: any) => {
-        category.exercises.forEach((item: any) => {
+      state.exercises.data?.questions.forEach((category: IQuestions) => {
+        category.exercises.forEach((item: IExerciseCard) => {
           state.exerciseCards = [
             ...state.exerciseCards,
             {

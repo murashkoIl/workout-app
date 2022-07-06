@@ -31,17 +31,17 @@ function Timer({ duration, color }: TimerProps) {
     (state: RootState) => state.data,
   );
   const dispatch = useAppDispatch();
-  const timerRef = createRef<any>();
+  const timerRef = createRef<SVGCircleElement>();
 
   const handleAnimatedTimer = (): void => {
-    timerRef.current.style.strokeDashoffset = 380 + (380 * (60 / duration) * time) / 60;
+    timerRef.current!.style.strokeDashoffset = `${380 + (380 * (60 / duration) * time) / 60}`;
   }
 
   useEffect(() => {
     dispatch(setTimer(duration));
     dispatch(setTimerActive());
 
-    timerRef.current.style.stroke = color;
+    timerRef.current!.style.stroke = color;
     return () => {
       dispatch(setTimerUnActive());
     };

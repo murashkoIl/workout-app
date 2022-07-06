@@ -21,7 +21,7 @@ type VideoWrapperProps = {
 
 function VideoWrapper({ card }: VideoWrapperProps) {
   const dispatch = useAppDispatch();
-  const videoRef = createRef<any>(); // fix any type and add this line to useEffect mb
+  const videoRef = createRef<any>();
 
   const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
