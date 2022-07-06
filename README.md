@@ -32,3 +32,124 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 - Netlify
 
 ## Folders structure
+
+.
+├── .husky
+├── build
+├── node_modules
+├── public
+    ├── favicon.ico
+    ├── index.html
+    ├── manifest.json
+    ├── robots.txt
+├── src
+    ├── components
+        ├── Buttons
+            ├── MainButton
+                ├── index.tsx
+                ├── MainButton.module.scss
+            ├── SwitchButton
+                ├── index.tsx
+                ├── SwitchButton.module.scss
+            ├── PlayStopButton
+                ├── index.tsx
+                ├── PlayStopButton.module.scss
+        ├── CompletePage
+            ├── CompletePage.modulde.scss
+            ├── index.tsx
+        ├── Divider
+            ├── Divider.module.scss
+            ├── index.tsx
+        ├── ExercisePage
+            ├── components
+                ├── GetReady
+                    ├── GetReady.module.scss
+                    ├── index.tsx
+                ├── VideoWrapper
+                    ├── components
+                        ├── GoBack
+                            ├── GoBack.module.scss
+                            ├── index.tsx
+                        ├── PauseSection
+                            ├── index.tsx
+                            ├── PauseSection.module.scss
+                        ├── VideoBlock
+                            ├── components
+                                ├── Pause
+                                    ├── index.tsx
+                                    ├── Pause.module.scss
+                                ├── Video
+                                    ├── index.tsx
+                                    ├── Video.module.scss
+                            ├── index.tsx
+                            ├── VideoBlock.module.scss
+                        ├── VideoControls
+                            ├── index.tsx
+                            ├── VideoControls.module.scss
+                    ├── index.tsx
+                    ├── VideoWrapper.module.scss
+            ├── ExercisePage.module.scss
+            ├── index.tsx
+        ├── ExercisesFetchingError
+            ├── ExerciseFetchingError.module.scss
+            ├── index.tsx
+        ├── ExerciseSkeleton
+            ├── ExerciseSkeleton.module.scss
+            ├── index.tsx
+        ├── OverviewPage
+            ├── components
+                ├── About
+                    ├── About.module.scss
+                    ├── index.tsx
+                ├── Exercise
+                    ├── ExerciseBlock
+                        ├── ExerciseBlock.module.scss
+                        ├── index.tsx
+                    ├── ExerciseCard
+                        ├── ExerciseCard.module.scss
+                        ├── index.tsx
+                    ├── ExerciseWrapper
+                        ├── ExerciseWrapper.module.scss
+                        ├── index.tsx
+            ├── index.tsx
+            ├── OverviewPage.module.scss
+        ├── Timer
+            ├── index.tsx
+            ├── Timer.module.scss
+    ├── images
+        ├── icons
+            ├── check.svg
+        ├── exercise-1.jpeg
+        ├── main.jpeg
+    ├── interfaces
+        ├── DataInterface.ts
+        ├── ExerciseCardInterface.ts
+        ├── VideosInterface.ts
+    ├── redux
+        ├── hooks
+            ├── hooks.ts
+        ├── slices
+            ├── dataSlice.ts
+            ├── pagesSlice.ts
+            ├── pauseSlice.ts
+            ├── timerSlice.ts
+        ├── store.ts
+    ├── shared
+        ├── consts.ts
+    ├── App.scss
+    ├── App.test.tsx
+    ├── App.tsx
+    ├── index.scss
+    ├── index.tsx
+    ├── react-app-env.d.ts
+    ├── reportWebVitals.ts
+    ├── setupTests.ts
+├── .env
+├── .eslintignore
+├── .eslint.json
+├── .gitignore
+├── .prettierrc
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.json
