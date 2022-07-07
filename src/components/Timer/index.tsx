@@ -1,68 +1,64 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable prettier/prettier */
-import { createRef, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import {
-  setTimer,
-  timerTick,
-  setTimerActive,
-  setTimerUnActive,
-} from "../../redux/slices/timerSlice";
+import { createRef, useState, useEffect } from "react";
+import { useAppSelector } from "../../redux/hooks/hooks";
+import // setTimer,
+// timerTick,
+// setTimerActive,
+// setTimerUnActive,
+"../../redux/slices/timerSlice";
 import { RootState } from "../../redux/store";
-import { setIsGetReady, setNotGetReady } from "../../redux/slices/pagesSlice";
-import {
-  incrementExerciseCounter,
-  setExercisesDone,
-} from "../../redux/slices/dataSlice";
 import styles from "./Timer.module.scss";
 
 type TimerProps = {
   duration: number;
-  color: string
+  color: string;
+  isTimerActive?: boolean;
+  onTimerEnd?: () => void;
+  setTimer?: (val: boolean) => void;
 };
 
-function Timer({ duration, color }: TimerProps) {
-  const { time, isTimerActive } = useAppSelector(
-    (state: RootState) => state.timer,
-  );
+function Timer({ duration, color, onTimerEnd, isTimerActive, setTimer }: TimerProps) {
+  const [time, setTime] = useState<number>(0);
+  // const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
+
   const isGetReady = useAppSelector(
     (state: RootState) => state.exercises.isGetReady,
   );
-  const { exerciseCards, exerciseCounter } = useAppSelector(
-    (state: RootState) => state.data,
-  );
-  const dispatch = useAppDispatch();
   const timerRef = createRef<SVGCircleElement>();
 
   const handleAnimatedTimer = (): void => {
-    timerRef.current!.style.strokeDashoffset = `${380 + (380 * (60 / duration) * time) / 60}`;
-  }
+    timerRef.current!.style.strokeDashoffset = `${
+      380 + (380 * (60 / duration) * time) / 60
+    }`;
+  };  
 
   useEffect(() => {
-    dispatch(setTimer(duration));
-    dispatch(setTimerActive());
+    setTime(duration);
+    setTimer?.(true);
+    // setIsTimerActive(true);
 
     timerRef.current!.style.stroke = color;
     return () => {
-      dispatch(setTimerUnActive());
+      setTimer?.(false);
+      // setIsTimerActive(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    let interval: any = null;
+    let interval: NodeJS.Timer | number = 0;
 
     handleAnimatedTimer();
 
     if (isTimerActive) {
       interval = setInterval(() => {
         if (time === 1 && duration === 5) {
-          dispatch(setNotGetReady());
+          onTimerEnd?.();
         }
 
         if (!isGetReady && time === 1) {
-          dispatch(setExercisesDone(exerciseCards[exerciseCounter].id));
-          dispatch(incrementExerciseCounter());
-          dispatch(setIsGetReady());
+          onTimerEnd?.();
         }
 
         if (isTimerActive && !time) {
@@ -70,7 +66,7 @@ function Timer({ duration, color }: TimerProps) {
           return;
         }
 
-        dispatch(timerTick());
+        setTime((prev) => prev - 1);
       }, 1000);
     } else {
       clearInterval(interval);

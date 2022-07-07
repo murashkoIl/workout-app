@@ -25,6 +25,7 @@ function PauseSection({ videoRef }: PauseSectionProps) {
     e.preventDefault();
     dispatch(toggleActive());
     dispatch(pauseHandler());
+
     !isPause ? videoRef.current.pause() : videoRef.current.play();
   };
 

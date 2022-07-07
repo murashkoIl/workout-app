@@ -8,7 +8,7 @@ export interface TimerState {
 
 const initialState: TimerState = {
   time: 0,
-  isTimerActive: false,
+  isTimerActive: true,
 };
 
 export const timerSlice = createSlice({
@@ -31,6 +31,10 @@ export const timerSlice = createSlice({
       state.isTimerActive = false;
     },
 
+    setTimerStatus: (state, action: PayloadAction<boolean>) => {
+      state.isTimerActive = action.payload;
+    },
+
     toggleActive: (state) => {
       state.isTimerActive = !state.isTimerActive;
     },
@@ -44,6 +48,7 @@ export const {
   setTimerActive,
   setTimerUnActive,
   toggleActive,
+  setTimerStatus,
 } = timerSlice.actions;
 
 export default timerSlice.reducer;
