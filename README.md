@@ -60,59 +60,53 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── Divider
                 ├── Divider.module.scss
                 ├── index.tsx
-            ├── ExercisePage
+            ├── Exercises
                 ├── components
+                    ├── ExercisePage
+                        ├── index.tsx
                     ├── GetReady
                         ├── GetReady.module.scss
                         ├── index.tsx
+                    ├── GoBack
+                        ├── GoBack.module.scss
+                        ├── index.tsx
+                    ├── PauseSection
+                        ├── index.tsx
+                    ├── Pause
+                        ├── index.tsx
+                        ├── Pause.module.scss
+                    ├── Video
+                        ├── index.tsx
+                        ├── Video.module.scss
+                    ├── VideoBlock
+                        ├── index.tsx
+                    ├── VideoControls
+                        ├── index.tsx
+                        ├── VideoControls.module.scss
                     ├── VideoWrapper
-                        ├── components
-                            ├── GoBack
-                                ├── GoBack.module.scss
-                                ├── index.tsx
-                            ├── PauseSection
-                                ├── index.tsx
-                                ├── PauseSection.module.scss
-                            ├── VideoBlock
-                                ├── components
-                                    ├── Pause
-                                        ├── index.tsx
-                                        ├── Pause.module.scss
-                                    ├── Video
-                                        ├── index.tsx
-                                        ├── Video.module.scss
-                                ├── index.tsx
-                                ├── VideoBlock.module.scss
-                            ├── VideoControls
-                                ├── index.tsx
-                                ├── VideoControls.module.scss
                         ├── index.tsx
                         ├── VideoWrapper.module.scss
-                ├── ExercisePage.module.scss
-                ├── index.tsx
             ├── ExercisesFetchingError
-                ├── ExerciseFetchingError.module.scss
                 ├── index.tsx
             ├── ExerciseSkeleton
                 ├── ExerciseSkeleton.module.scss
                 ├── index.tsx
-            ├── OverviewPage
+            ├── Overview
                 ├── components
+                    ├── OverviewPage
+                        ├── index.tsx
                     ├── About
                         ├── About.module.scss
                         ├── index.tsx
-                    ├── Exercise
-                        ├── ExerciseBlock
-                            ├── ExerciseBlock.module.scss
-                            ├── index.tsx
-                        ├── ExerciseCard
-                            ├── ExerciseCard.module.scss
-                            ├── index.tsx
-                        ├── ExerciseWrapper
-                            ├── ExerciseWrapper.module.scss
-                            ├── index.tsx
-                ├── index.tsx
-                ├── OverviewPage.module.scss
+                    ├── ExerciseBlock
+                        ├── ExerciseBlock.module.scss
+                        ├── index.tsx
+                    ├── ExerciseCard
+                        ├── ExerciseCard.module.scss
+                        ├── index.tsx
+                    ├── ExerciseWrapper
+                        ├── ExerciseWrapper.module.scss
+                        ├── index.tsx
             ├── Timer
                 ├── index.tsx
                 ├── Timer.module.scss
