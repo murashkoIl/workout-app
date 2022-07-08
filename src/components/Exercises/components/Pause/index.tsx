@@ -1,4 +1,4 @@
-import MainButton from "../../../../../../../Buttons/MainButton";
+import MainButton from "components/Buttons/MainButton";
 import styles from "./Pause.module.scss";
 
 function Pause() {

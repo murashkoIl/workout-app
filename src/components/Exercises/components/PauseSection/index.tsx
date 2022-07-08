@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
-import Divider from "../../../../../Divider";
-import PlayStopButton from "../../../../../Buttons/PlayStopButton";
+import { RootState } from "redux/store";
+import { toggleActive } from "redux/slices/timerSlice";
+import { useAppSelector, useAppDispatch } from "redux/hooks/hooks";
+import { pauseHandler } from "redux/slices/pauseSlice";
+import PlayStopButton from "components/Buttons/PlayStopButton";
+import Divider from "components/Divider";
 import styles from "./PauseSection.module.scss";
-import {
-  useAppSelector,
-  useAppDispatch,
-} from "../../../../../../redux/hooks/hooks";
-import { RootState } from "../../../../../../redux/store";
-import { toggleActive } from "../../../../../../redux/slices/timerSlice";
-import { pauseHandler } from "../../../../../../redux/slices/pauseSlice";
 
 type PauseSectionProps = {
   videoRef: any;

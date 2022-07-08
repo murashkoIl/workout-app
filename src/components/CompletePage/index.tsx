@@ -1,7 +1,8 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MainButton from "components/Buttons/MainButton";
+
 import styles from "./CompletePage.module.scss";
-import MainButton from "../Buttons/MainButton";
 
 type CompletePageProps = {
   type: IconDefinition;

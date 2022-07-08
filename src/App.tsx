@@ -1,16 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.scss";
-import Overview from "./components/OverviewPage";
-import ExercisePage from "./components/ExercisePage";
 import {
   calculateExercisesDuration,
   fetchExercises,
   setExerciseCards,
 } from "./redux/slices/dataSlice";
 import { useAppDispatch } from "./redux/hooks/hooks";
+import Overview from "./components/Overview/components/OverviewPage";
+import ExercisePage from "./components/Exercises/components/ExercisePage";
 import url from "./shared/consts";
+import "./App.scss";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ function App() {
         dispatch(calculateExercisesDuration());
       })
       // eslint-disable-next-line no-alert
-      .catch((err) => alert(err));
+      .catch((err: string) => alert(err));
   }, []);
 
   return (

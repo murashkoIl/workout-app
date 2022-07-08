@@ -1,17 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect } from "react";
-import styles from "./ExerciseWrapper.module.scss";
-import MainButton from "../../../../Buttons/MainButton";
-import { RootState } from "../../../../../redux/store";
+import { RootState } from "redux/store";
+import { setIsGetReady } from "redux/slices/pagesSlice";
+import { setPauseUnActive } from "redux/slices/pauseSlice";
+import { useAppSelector, useAppDispatch } from "redux/hooks/hooks";
+import MainButton from "components/Buttons/MainButton";
+import ExerciseSkeleton from "components/ExerciseSkeleton";
+import ExercisesFetchingError from "components/ExercisesFetchingError";
 import ExerciseBlock from "../ExerciseBlock";
-import ExerciseSkeleton from "../../../../ExerciseSkeleton";
-import {
-  useAppSelector,
-  useAppDispatch,
-} from "../../../../../redux/hooks/hooks";
-import ExercisesFetchingError from "../../../../ExercisesFetchingError";
-import { setIsGetReady } from "../../../../../redux/slices/pagesSlice";
-import { setPauseUnActive } from "../../../../../redux/slices/pauseSlice";
+import styles from "./ExerciseWrapper.module.scss";
 
 function ExerciseWrapper() {
   const dispatch = useAppDispatch();

@@ -1,13 +1,10 @@
-import { RootState } from "../../../../../redux/store";
+import { RootState } from "redux/store";
+import { useAppSelector } from "redux/hooks/hooks";
+import { IExerciseCard } from "interfaces/ExerciseCardInterface";
+import { IExercises, IQuestions } from "interfaces/DataInterface";
+import Divider from "components/Divider";
 import ExerciseCard from "../ExerciseCard";
-import Divider from "../../../../Divider";
 import styles from "./ExerciseBlock.module.scss";
-import { useAppSelector } from "../../../../../redux/hooks/hooks";
-import { IExerciseCard } from "../../../../../interfaces/ExerciseCardInterface";
-import {
-  IExercises,
-  IQuestions,
-} from "../../../../../interfaces/DataInterface";
 
 function ExerciseBlock() {
   const exercises = useAppSelector((state: RootState) => state.data.exercises);

@@ -1,5 +1,5 @@
+import main from "images/main.jpeg";
 import styles from "./About.module.scss";
-import main from "../../../../images/main.jpeg";
 
 function About() {
   return (

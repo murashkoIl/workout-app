@@ -1,30 +1,19 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable prettier/prettier */
 import { createRef, useState, useEffect } from "react";
-import { useAppSelector } from "../../redux/hooks/hooks";
-import // setTimer,
-// timerTick,
-// setTimerActive,
-// setTimerUnActive,
-"../../redux/slices/timerSlice";
-import { RootState } from "../../redux/store";
 import styles from "./Timer.module.scss";
 
 type TimerProps = {
   duration: number;
   color: string;
   isTimerActive?: boolean;
+  isGetReady?: boolean;
   onTimerEnd?: () => void;
   setTimer?: (val: boolean) => void;
 };
 
-function Timer({ duration, color, onTimerEnd, isTimerActive, setTimer }: TimerProps) {
+function Timer({ duration, color, isGetReady, onTimerEnd, isTimerActive = true, setTimer }: TimerProps) {
   const [time, setTime] = useState<number>(0);
-  // const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
-
-  const isGetReady = useAppSelector(
-    (state: RootState) => state.exercises.isGetReady,
-  );
   const timerRef = createRef<SVGCircleElement>();
 
   const handleAnimatedTimer = (): void => {
@@ -36,12 +25,10 @@ function Timer({ duration, color, onTimerEnd, isTimerActive, setTimer }: TimerPr
   useEffect(() => {
     setTime(duration);
     setTimer?.(true);
-    // setIsTimerActive(true);
 
     timerRef.current!.style.stroke = color;
     return () => {
       setTimer?.(false);
-      // setIsTimerActive(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

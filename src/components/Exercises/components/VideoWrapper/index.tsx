@@ -1,19 +1,19 @@
 /* eslint-disable import/extensions */
 import React, { createRef } from "react";
-import VideoBlock from "./components/VideoBlock";
-import { useAppDispatch } from "../../../../redux/hooks/hooks";
-import { setPauseUnActive } from "../../../../redux/slices/pauseSlice";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { setPauseUnActive } from "redux/slices/pauseSlice";
 import {
   decrementExerciseCounter,
   incrementExerciseCounter,
   setExercisesDone,
-} from "../../../../redux/slices/dataSlice";
-import { setIsGetReady } from "../../../../redux/slices/pagesSlice";
-import { IExerciseCard } from "../../../../interfaces/ExerciseCardInterface";
+} from "redux/slices/dataSlice";
+import { setIsGetReady } from "redux/slices/pagesSlice";
+import { IExerciseCard } from "interfaces/ExerciseCardInterface";
+import VideoBlock from "../VideoBlock";
 import styles from "./VideoWrapper.module.scss";
-import GoBack from "./components/GoBack";
-import VideoControls from "./components/VideoControls";
-import PauseSection from "./components/PauseSection";
+import GoBack from "../GoBack";
+import VideoControls from "../VideoControls";
+import PauseSection from "../PauseSection";
 
 type VideoWrapperProps = {
   card: IExerciseCard;

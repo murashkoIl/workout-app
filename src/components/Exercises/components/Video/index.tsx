@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
+import { useAppSelector } from "redux/hooks/hooks";
+import { RootState } from "redux/store";
 import Pause from "../Pause";
-import { useAppSelector } from "../../../../../../../../redux/hooks/hooks";
-import { RootState } from "../../../../../../../../redux/store";
 import styles from "./Video.module.scss";
 
 type VideoProps = {

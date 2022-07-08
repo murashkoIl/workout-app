@@ -1,9 +1,9 @@
-import { IExerciseCard } from "../../../../interfaces/ExerciseCardInterface";
-import { useAppDispatch, useAppSelector } from "../../../../redux/hooks/hooks";
-import { setNotGetReady } from "../../../../redux/slices/pagesSlice";
-import { setTimerStatus } from "../../../../redux/slices/timerSlice";
-import { RootState } from "../../../../redux/store";
-import Timer from "../../../Timer";
+import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
+import { setNotGetReady } from "redux/slices/pagesSlice";
+import { setTimerStatus } from "redux/slices/timerSlice";
+import { RootState } from "redux/store";
+import { IExerciseCard } from "interfaces/ExerciseCardInterface";
+import Timer from "components/Timer";
 import styles from "./GetReady.module.scss";
 
 type VideoWrapperProps = {
@@ -13,6 +13,9 @@ type VideoWrapperProps = {
 function GetReady({ card }: VideoWrapperProps) {
   const isTimerActive = useAppSelector(
     (state: RootState) => state.timer.isTimerActive,
+  );
+  const isGetReady = useAppSelector(
+    (state: RootState) => state.exercises.isGetReady,
   );
   const dispatch = useAppDispatch();
 
@@ -30,6 +33,7 @@ function GetReady({ card }: VideoWrapperProps) {
       <Timer
         isTimerActive={isTimerActive}
         setTimer={(val: boolean) => setTimer(val)}
+        isGetReady={isGetReady}
         onTimerEnd={onTimerEnd}
         color="#ff2972"
         duration={5}

@@ -14,7 +14,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@redux/*": ["./redux/*"],
+      "@interfaces/*": ["./interfaces/*"],
+      "@images/*": ["./images/*"],
+      "@buttons/*": ["./components/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", ".eslintrc.json"]
 }

@@ -3,20 +3,17 @@ import {
   faCircleArrowLeft,
   faCircleArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Timer from "../../../../../Timer";
-import SwitchButton from "../../../../../Buttons/SwitchButton";
-import styles from "./VideoControls.module.scss";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../../../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
+import { setTimerStatus } from "redux/slices/timerSlice";
+import { setIsGetReady } from "redux/slices/pagesSlice";
+import { RootState } from "redux/store";
 import {
   setExercisesDone,
   incrementExerciseCounter,
-} from "../../../../../../redux/slices/dataSlice";
-import { setTimerStatus } from "../../../../../../redux/slices/timerSlice";
-import { setIsGetReady } from "../../../../../../redux/slices/pagesSlice";
-import { RootState } from "../../../../../../redux/store";
+} from "redux/slices/dataSlice";
+import Timer from "components/Timer";
+import SwitchButton from "components/Buttons/SwitchButton";
+import styles from "./VideoControls.module.scss";
 
 type VideoControlsProps = {
   title: string;
@@ -35,6 +32,9 @@ function VideoControls({
   const isTimerActive = useAppSelector(
     (state: RootState) => state.timer.isTimerActive,
   );
+  const isGetReady = useAppSelector(
+    (state: RootState) => state.exercises.isGetReady,
+  );
   const dispatch = useAppDispatch();
 
   const onTimerEnd = (): void => {
@@ -46,8 +46,6 @@ function VideoControls({
   const setTimer = (value: boolean): void => {
     dispatch(setTimerStatus(value));
   };
-
-  console.log("video controls render");
 
   return (
     <>
@@ -66,6 +64,7 @@ function VideoControls({
         <Timer
           isTimerActive={isTimerActive}
           setTimer={(val: boolean) => setTimer(val)}
+          isGetReady={isGetReady}
           onTimerEnd={onTimerEnd}
           color="#1DE9B6"
           duration={duration}

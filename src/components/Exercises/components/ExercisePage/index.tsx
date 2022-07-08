@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-no-useless-fragment */
+import { RootState } from "redux/store";
+import { useAppSelector } from "redux/hooks/hooks";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useAppSelector } from "../../redux/hooks/hooks";
-import { RootState } from "../../redux/store";
-import CompletePage from "../CompletePage";
-import GetReady from "./components/GetReady";
-import VideoWrapper from "./components/VideoWrapper";
+import CompletePage from "components/CompletePage";
+import GetReady from "../GetReady";
+import VideoWrapper from "../VideoWrapper";
 
 function ExercisePage() {
   const isGetReady = useAppSelector(

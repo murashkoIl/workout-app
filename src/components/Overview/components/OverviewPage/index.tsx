@@ -1,5 +1,5 @@
-import About from "./components/About";
-import ExerciseWrapper from "./components/Exercise/ExerciseWrapper";
+import About from "../About";
+import ExerciseWrapper from "../ExerciseWrapper";
 
 function Overview() {
   return (
