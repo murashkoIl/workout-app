@@ -6,7 +6,6 @@ import { useAppSelector, useAppDispatch } from "redux/hooks/hooks";
 import { pauseHandler } from "redux/slices/pauseSlice";
 import PlayStopButton from "components/Buttons/PlayStopButton";
 import Divider from "components/Divider";
-import styles from "./PauseSection.module.scss";
 
 type PauseSectionProps = {
   videoRef: any;
@@ -27,7 +26,7 @@ function PauseSection({ videoRef }: PauseSectionProps) {
   };
 
   return (
-    <div className={styles.playPauseSection}>
+    <>
       <Divider />
       <div className="playStopWrapper">
         <PlayStopButton
@@ -37,7 +36,7 @@ function PauseSection({ videoRef }: PauseSectionProps) {
           type={isPause ? faPlay : faPause}
         />
       </div>
-    </div>
+    </>
   );
 }
 

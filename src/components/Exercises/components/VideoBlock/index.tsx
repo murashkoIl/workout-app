@@ -1,5 +1,4 @@
 import Video from "../Video";
-import styles from "./VideoBlock.module.scss";
 
 type VideoBlockProps = {
   video: string;
@@ -7,11 +6,7 @@ type VideoBlockProps = {
 };
 
 function VideoBlock({ video, videoRef }: VideoBlockProps) {
-  return (
-    <div className={styles.videoWrapper}>
-      <Video videoRef={videoRef} video={video} />
-    </div>
-  );
+  return <Video videoRef={videoRef} video={video} />;
 }
 
 export default VideoBlock;
