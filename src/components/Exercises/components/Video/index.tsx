@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/media-has-caption */
+import { RefObject } from "react";
 import { useAppSelector } from "redux/hooks/hooks";
 import { RootState } from "redux/store";
 import Pause from "../Pause";
 import styles from "./Video.module.scss";
 
 type VideoProps = {
-  videoRef: any;
+  videoRef: RefObject<HTMLVideoElement>;
   video: string;
 };
 

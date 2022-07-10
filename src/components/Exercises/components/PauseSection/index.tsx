@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
+import { RefObject } from "react";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 import { RootState } from "redux/store";
 import { toggleActive } from "redux/slices/timerSlice";
@@ -8,7 +9,7 @@ import PlayStopButton from "components/Buttons/PlayStopButton";
 import Divider from "components/Divider";
 
 type PauseSectionProps = {
-  videoRef: any;
+  videoRef: RefObject<HTMLVideoElement>;
 };
 
 function PauseSection({ videoRef }: PauseSectionProps) {
@@ -22,7 +23,7 @@ function PauseSection({ videoRef }: PauseSectionProps) {
     dispatch(toggleActive());
     dispatch(pauseHandler());
 
-    !isPause ? videoRef.current.pause() : videoRef.current.play();
+    !isPause ? videoRef.current?.pause() : videoRef.current?.play();
   };
 
   return (

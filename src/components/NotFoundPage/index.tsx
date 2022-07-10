@@ -1,4 +1,3 @@
-import React from "react";
 import MainButton from "components/Buttons/MainButton";
 import styles from "./NotFoundPage.module.scss";
 

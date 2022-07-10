@@ -1,8 +1,9 @@
+import { RefObject } from "react";
 import Video from "../Video";
 
 type VideoBlockProps = {
   video: string;
-  videoRef: any;
+  videoRef: RefObject<HTMLVideoElement>;
 };
 
 function VideoBlock({ video, videoRef }: VideoBlockProps) {

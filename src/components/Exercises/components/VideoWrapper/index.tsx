@@ -21,7 +21,7 @@ type VideoWrapperProps = {
 
 function VideoWrapper({ card }: VideoWrapperProps) {
   const dispatch = useAppDispatch();
-  const videoRef = createRef<any>();
+  const videoRef = createRef<HTMLVideoElement>();
 
   const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
