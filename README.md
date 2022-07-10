@@ -17,12 +17,12 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 
 ## Application stack
 
-- React 
+- React
 - react-content-loader
 - react-router-dom
 - TypeScript
 - Redux Toolkit
-- Async Thunk 
+- Async Thunk
 - Axios
 - FontAwesome Icons
 - Eslint
@@ -91,6 +91,9 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── ExerciseSkeleton
                 ├── ExerciseSkeleton.module.scss
                 ├── index.tsx
+            ├── NotFoundPage
+                ├── index.tsx
+                ├── NotFoundPage.module.scss
             ├── Overview
                 ├── components
                     ├── OverviewPage
