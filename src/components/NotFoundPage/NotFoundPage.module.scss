@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 2rem);
+}
+
+.title {
+  font-size: 3.5rem;
+}
+
+.text {
+  padding: 0 0.5rem;
+}
+
+.buttonWrapper {
+  border-radius: 15px;
+  margin-top: 1rem;
+  width: 15rem;
+  background-color: #AA00FF;
+}
