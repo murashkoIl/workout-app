@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable prettier/prettier */
-import { createRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "./Timer.module.scss";
 
 type TimerProps = {
@@ -14,7 +14,7 @@ type TimerProps = {
 
 function Timer({ duration, color, isGetReady, onTimerEnd, isTimerActive = true, setTimer }: TimerProps) {
   const [time, setTime] = useState<number>(0);
-  const timerRef = createRef<SVGCircleElement>();
+  const timerRef = useRef<SVGCircleElement>(null);
 
   const handleAnimatedTimer = (): void => {
     timerRef.current!.style.strokeDashoffset = `${

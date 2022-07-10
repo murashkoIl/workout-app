@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { createRef } from "react";
+import React, { useRef } from "react";
 import { useAppDispatch } from "redux/hooks/hooks";
 import { setPauseUnActive } from "redux/slices/pauseSlice";
 import {
@@ -21,7 +21,7 @@ type VideoWrapperProps = {
 
 function VideoWrapper({ card }: VideoWrapperProps) {
   const dispatch = useAppDispatch();
-  const videoRef = createRef<HTMLVideoElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
