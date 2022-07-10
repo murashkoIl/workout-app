@@ -19,4 +19,9 @@
   margin-top: 1rem;
   width: 15rem;
   background-color: #AA00FF;
+  transition: box-shadow 0.3s ease-in;
+
+  &:hover {
+    box-shadow: 0 0 15px #ff98ff;
+  }
 }

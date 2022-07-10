@@ -38,7 +38,12 @@
   background-color: #AA00FF;
   width: calc(100vw - 2rem);
   max-width: 56.25rem;
+  transition: box-shadow 0.3s ease-in;
   z-index: 15;
+
+  &:hover {
+    box-shadow: 0 0 15px #ff98ff;
+  }
 }
 
 .skeletonWrapper {
