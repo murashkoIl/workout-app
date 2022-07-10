@@ -64,9 +64,11 @@ export const dataSlice = createSlice({
     },
 
     calculateExercisesDuration: (state) => {
-      state.exercisesDuration = Math.round(state.exerciseCards.reduce((acc: number, item: IExerciseCard) => {
-        return acc + item.duration;
-      }, 0) / 60);
+      state.exercisesDuration = Math.round(
+        state.exerciseCards.reduce((acc: number, item: IExerciseCard) => {
+          return acc + item.duration;
+        }, 0) / 60,
+      );
     },
 
     incrementExerciseCounter: (state) => {
@@ -75,6 +77,10 @@ export const dataSlice = createSlice({
 
     decrementExerciseCounter: (state) => {
       state.exerciseCounter -= 1;
+    },
+
+    setExerciseCounter: (state, action: PayloadAction<number>) => {
+      state.exerciseCounter = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -105,6 +111,7 @@ export const {
   incrementExerciseCounter,
   setExercisesDone,
   calculateExercisesDuration,
+  setExerciseCounter,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;
