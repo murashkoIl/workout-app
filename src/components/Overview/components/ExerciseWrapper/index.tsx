@@ -14,15 +14,13 @@ function ExerciseWrapper() {
   const dispatch = useAppDispatch();
   const status = useAppSelector((state: RootState) => state.data.status);
   const exerciseCounter = useAppSelector(
-    // eslint-disable-next-line prettier/prettier
     (state: RootState) => state.data.exerciseCounter,
   );
 
   useEffect(() => {
     dispatch(setIsGetReady());
     dispatch(setPauseUnActive());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <section className={styles.exerciseWrapperSection}>

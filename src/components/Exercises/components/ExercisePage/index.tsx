@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { RootState } from "redux/store";
 import { useAppSelector } from "redux/hooks/hooks";

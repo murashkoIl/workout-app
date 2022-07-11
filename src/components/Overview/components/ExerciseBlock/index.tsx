@@ -10,13 +10,11 @@ import styles from "./ExerciseBlock.module.scss";
 function ExerciseBlock() {
   const exercises = useAppSelector((state: RootState) => state.data.exercises);
   const exercisesCards = useAppSelector(
-    // eslint-disable-next-line prettier/prettier
     (state: RootState) => state.data.exerciseCards,
   );
   const dispatch = useAppDispatch();
 
   const handleExerciseClick = (id: number) => {
-    // fix this method
     exercisesCards.forEach((card: IExerciseCard, idx: number) => {
       if (card.id === id) {
         dispatch(setExerciseCounter(idx));
@@ -39,7 +37,6 @@ function ExerciseBlock() {
                 isDone={
                   item.id ===
                   exercisesCards.find(
-                    // eslint-disable-next-line prettier/prettier
                     (el: IExerciseCard) => el.id === item.id && el.isDone,
                   )?.id
                     ? "done"

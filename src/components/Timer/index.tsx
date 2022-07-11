@@ -1,6 +1,5 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable prettier/prettier */
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import styles from "./Timer.module.scss";
 
 type TimerProps = {
@@ -12,15 +11,22 @@ type TimerProps = {
   setTimer?: (val: boolean) => void;
 };
 
-function Timer({ duration, color, isGetReady, onTimerEnd, isTimerActive = true, setTimer }: TimerProps) {
+function Timer({
+  duration,
+  color,
+  isGetReady,
+  onTimerEnd,
+  isTimerActive = true,
+  setTimer,
+}: TimerProps) {
   const [time, setTime] = useState<number>(0);
   const timerRef = useRef<SVGCircleElement>(null);
 
-  const handleAnimatedTimer = (): void => {
+  const handleAnimatedTimer = useCallback(() => {
     timerRef.current!.style.strokeDashoffset = `${
       380 + (380 * (60 / duration) * time) / 60
     }`;
-  };  
+  }, [duration, time]);
 
   useEffect(() => {
     setTime(duration);
@@ -30,8 +36,7 @@ function Timer({ duration, color, isGetReady, onTimerEnd, isTimerActive = true, 
     return () => {
       setTimer?.(false);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [color, duration]);
 
   useEffect(() => {
     let interval: NodeJS.Timer | number = 0;
@@ -62,8 +67,14 @@ function Timer({ duration, color, isGetReady, onTimerEnd, isTimerActive = true, 
     return () => {
       clearInterval(interval);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTimerActive, time]);
+  }, [
+    isTimerActive,
+    time,
+    duration,
+    isGetReady,
+    onTimerEnd,
+    handleAnimatedTimer,
+  ]);
 
   return (
     <div id={styles.time}>
