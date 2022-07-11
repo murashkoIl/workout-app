@@ -10,7 +10,9 @@
 }
 
 .imgWrapper {
+
   img {
     border-radius: 10px;
+    width: calc(100% - 2rem);
   }
 }
