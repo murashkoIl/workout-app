@@ -36,7 +36,8 @@ function Timer({
     return () => {
       setTimer?.(false);
     };
-  }, [color, duration]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timer | number = 0;

@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
 import { IExerciseCard } from "interfaces/ExerciseCardInterface";
 import { IExercises, IQuestions } from "interfaces/DataInterface";
 import { setExerciseCounter } from "redux/slices/dataSlice";
+import { Link } from "react-router-dom";
 import Divider from "components/Divider";
 import ExerciseCard from "../ExerciseCard";
 import styles from "./ExerciseBlock.module.scss";
@@ -30,22 +31,25 @@ function ExerciseBlock() {
           <div className={styles.exerciseTitle}>{group.title}</div>
           <div className={styles.exerciseCards}>
             {group.exercises.map((item: IExercises) => (
-              <ExerciseCard
-                handleClick={(id) => handleExerciseClick(id)}
+              <Link
+                onClick={() => handleExerciseClick(item.id)}
                 key={item.id}
-                id={item.id}
-                isDone={
-                  item.id ===
-                  exercisesCards.find(
-                    (el: IExerciseCard) => el.id === item.id && el.isDone,
-                  )?.id
-                    ? "done"
-                    : "notDone"
-                }
-                img={item.photo}
-                title={item.title}
-                duration={item.duration}
-              />
+                to="/exercises"
+              >
+                <ExerciseCard
+                  isDone={
+                    item.id ===
+                    exercisesCards.find(
+                      (el: IExerciseCard) => el.id === item.id && el.isDone,
+                    )?.id
+                      ? "done"
+                      : "notDone"
+                  }
+                  img={item.photo}
+                  title={item.title}
+                  duration={item.duration}
+                />
+              </Link>
             ))}
           </div>
         </div>

@@ -12,7 +12,7 @@ import {
   incrementExerciseCounter,
 } from "redux/slices/dataSlice";
 import Timer from "components/Timer";
-import SwitchButton from "components/Buttons/SwitchButton";
+import MemoizedSwitchButton from "components/Buttons/SwitchButton";
 import styles from "./VideoControls.module.scss";
 
 type VideoControlsProps = {
@@ -53,8 +53,8 @@ function VideoControls({
 
       <div className={styles.controlPanel}>
         {exerciseCounter !== 0 ? (
-          <SwitchButton
-            render={(e) => handleArrowClick(e)}
+          <MemoizedSwitchButton
+            render={handleArrowClick}
             type={faCircleArrowLeft}
           />
         ) : (
@@ -70,8 +70,8 @@ function VideoControls({
           duration={duration}
         />
 
-        <SwitchButton
-          render={(e) => handleArrowClick(e)}
+        <MemoizedSwitchButton
+          render={handleArrowClick}
           type={faCircleArrowRight}
         />
       </div>

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from "react";
+import React, { memo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./SwitchButton.module.scss";
@@ -18,4 +18,6 @@ function SwitchButton({ render, type }: SwitchButtonProps) {
   );
 }
 
-export default SwitchButton;
+const MemoizedSwitchButton = memo(SwitchButton);
+
+export default MemoizedSwitchButton;
