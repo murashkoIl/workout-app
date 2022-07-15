@@ -8,11 +8,13 @@ import styles from "./SwitchButton.module.scss";
 type SwitchButtonProps = {
   render: (event: React.MouseEvent<Element, MouseEvent>) => void;
   type: IconDefinition;
+  text: string;
 };
 
-function SwitchButton({ render, type }: SwitchButtonProps) {
+function SwitchButton({ render, type, text }: SwitchButtonProps) {
   return (
-    <div onClick={(e) => render(e)} className={styles.switchButton}>
+    <div onClick={(e) => render(e)} className={styles.switchButton} id={text}>
+      <div>{text}</div>
       <FontAwesomeIcon icon={type} />
     </div>
   );

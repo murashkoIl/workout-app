@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
+  faArrowLeftLong,
+  faArrowRightLong,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
 import { setTimerStatus } from "redux/slices/timerSlice";
@@ -55,7 +55,8 @@ function VideoControls({
         {exerciseCounter !== 0 ? (
           <MemoizedSwitchButton
             render={handleArrowClick}
-            type={faCircleArrowLeft}
+            type={faArrowLeftLong}
+            text="Prev"
           />
         ) : (
           <div className={styles.div} />
@@ -66,13 +67,14 @@ function VideoControls({
           setTimer={(val: boolean) => setTimer(val)}
           isGetReady={isGetReady}
           onTimerEnd={onTimerEnd}
-          color="#1DE9B6"
+          color="#AA00FF"
           duration={duration}
         />
 
         <MemoizedSwitchButton
           render={handleArrowClick}
-          type={faCircleArrowRight}
+          type={faArrowRightLong}
+          text="Next"
         />
       </div>
     </>

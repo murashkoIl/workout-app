@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GoBack.module.scss";
 
 type GoBackProps = {
@@ -11,7 +9,7 @@ function GoBack({ handleGoBackCLick }: GoBackProps) {
   return (
     <div className={styles.goback}>
       <Link onClick={handleGoBackCLick} to="/">
-        <FontAwesomeIcon icon={faArrowLeftLong} /> Go Back
+        Go Back
       </Link>
     </div>
   );

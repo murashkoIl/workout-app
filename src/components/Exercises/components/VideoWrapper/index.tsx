@@ -25,7 +25,8 @@ function VideoWrapper({ card }: VideoWrapperProps) {
 
   const handleArrowClick = (e: React.MouseEvent<Element, MouseEvent>): void => {
     e.preventDefault();
-    if ((e.target as Element).closest(".fa-circle-arrow-right")) {
+
+    if ((e.target as Element).closest("#Next")) {
       dispatch(incrementExerciseCounter());
       dispatch(setExercisesDone(card.id));
     } else {
