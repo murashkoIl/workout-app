@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AnimatedRoutes from "components/AnimatedRoutes";
+import { BrowserRouter } from "react-router-dom";
 import {
   calculateExercisesDuration,
   fetchExercises,
   setExerciseCards,
 } from "./redux/slices/dataSlice";
 import { useAppDispatch } from "./redux/hooks/hooks";
-import Overview from "./components/Overview/components/OverviewPage";
-import NotFoundPage from "./components/NotFoundPage";
-import ExercisePage from "./components/Exercises/components/ExercisePage";
 import url from "./shared/consts";
 import "./App.scss";
 
@@ -31,11 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Overview />} />
-          <Route path="/exercises" element={<ExercisePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <AnimatedRoutes />
       </div>
     </BrowserRouter>
   );

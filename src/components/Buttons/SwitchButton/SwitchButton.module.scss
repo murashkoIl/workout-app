@@ -4,6 +4,12 @@
   border-radius: 10px;
   padding: 0.1rem 1.875rem;
   font-size: 1.25rem;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    background-color: #AA00FF;
+    color: #fff;
+  }
 
   @media (max-width: 440px) {
     font-size: 1.1rem;
