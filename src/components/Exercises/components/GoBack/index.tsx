@@ -10,7 +10,6 @@ function GoBack({ handleGoBackCLick }: GoBackProps) {
     <div className={styles.goback}>
       <Link onClick={handleGoBackCLick} to="/">
         Go Back
-        <div className={styles.underline} />
       </Link>
     </div>
   );

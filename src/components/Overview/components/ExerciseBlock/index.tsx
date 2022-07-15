@@ -32,8 +32,8 @@ function ExerciseBlock() {
           <div className={styles.exerciseCards}>
             {group.exercises.map((item: IExercises) => (
               <Link
-                onClick={() => handleExerciseClick(item.id)}
                 key={item.id}
+                onClick={() => handleExerciseClick(item.id)}
                 to="/exercises"
               >
                 <ExerciseCard
