@@ -30,6 +30,7 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
 - Husky
 - Scss
 - Netlify
+- Firebase
 
 ## Folders structure
 
@@ -44,6 +45,8 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
         ├── robots.txt
     ├── src
         ├── components
+            ├── AnimatedRoutes
+                ├── index.tsx
             ├── Buttons
                 ├── MainButton
                     ├── index.tsx
@@ -51,6 +54,9 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
                 ├── SwitchButton
                     ├── index.tsx
                     ├── SwitchButton.module.scss
+                ├── SubmitButton 
+                    ├── index.tsx
+                    ├── SubmitButton.module.scss
                 ├── PlayStopButton
                     ├── index.tsx
                     ├── PlayStopButton.module.scss
@@ -91,6 +97,25 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── ExerciseSkeleton
                 ├── ExerciseSkeleton.module.scss
                 ├── index.tsx
+            ├── LoginPage
+                ├── components
+                    ├── ForgotPassword
+                        ├── ForgotPassword.module.scss
+                        ├── index.tsx
+                    ├── InputField
+                        ├── index.tsx
+                        ├── InputField.module.scss
+                    ├── Login
+                        ├── index.tsx
+                    ├── LoginStatusBlock
+                        ├── index.tsx
+                        ├── LoginStatusBlock.module.scss
+                    ├── LogOut
+                        ├── index.tsx
+                        ├── LogOut.module.scss
+                    ├── SignUp
+                        ├── index.tsx
+                        ├── SignUp.module.scss
             ├── NotFoundPage
                 ├── index.tsx
                 ├── NotFoundPage.module.scss
@@ -113,6 +138,10 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── Timer
                 ├── index.tsx
                 ├── Timer.module.scss
+        ├── contexts
+            ├── AuthContext.tsx
+        ├── firebase
+            ├── firebase.js
         ├── images
             ├── icons
                 ├── check.svg
