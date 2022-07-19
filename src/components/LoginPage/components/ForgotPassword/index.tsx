@@ -1,15 +1,14 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "contexts/AuthContext";
 import { motion } from "framer-motion";
 import SubmitButton from "components/Buttons/SubmitButton";
+import { firebaseResetPassword } from "helpers/firebaseHelpers";
 import InputField from "../InputField";
-import LoginErrorBlock from "../LoginStatusBlock";
+import LoginStatusBlock from "../LoginStatusBlock";
 import styles from "../SignUp/SignUp.module.scss";
 
 function ForgotPassword() {
   const emailRef = useRef<HTMLInputElement>(null);
-  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +20,7 @@ function ForgotPassword() {
       setMessage("");
       setError("");
       setLoading(true);
-      await resetPassword(emailRef.current?.value);
+      await firebaseResetPassword(emailRef.current!.value);
       setMessage("Check your inbox for further instructions");
     } catch (err) {
       setError("Failed to reset password!");
@@ -40,11 +39,11 @@ function ForgotPassword() {
         <div className={styles.cardWrapper}>
           <h2 className={styles.title}>Password Reset</h2>
           {error ? (
-            <LoginErrorBlock message={error} />
+            <LoginStatusBlock message={error} />
           ) : (
             <div className={styles.fake} />
           )}
-          {message && <LoginErrorBlock status="success" message={message} />}
+          {message && <LoginStatusBlock status="success" message={message} />}
           <form onSubmit={handleSubmit} className={styles.form} action="submit">
             <InputField title="Email" type="email" reference={emailRef} />
             <div className={styles.forgotPassword}>

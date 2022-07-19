@@ -1,21 +1,24 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from "react";
-import { useAuth } from "contexts/AuthContext";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { logout } from "redux/slices/authSlice";
+import { firebaseLogout } from "helpers/firebaseHelpers";
 import LoginErrorBlock from "../LoginStatusBlock";
 import styles from "./LogOut.module.scss";
 
 function LogOut() {
   const [error, setError] = useState("");
-  const { logout } = useAuth();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     setError("");
 
     try {
-      await logout();
+      await firebaseLogout();
+      dispatch(logout());
       navigate("/login");
     } catch {
       setError("Failed to log out!");

@@ -15,12 +15,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
+      "src/*": ["workout-app/src/*"],
       "@redux/*": ["./redux/*"],
       "@interfaces/*": ["./interfaces/*"],
       "@images/*": ["./images/*"],
-      "@buttons/*": ["./components/*"]
+      "@buttons/*": ["./components/*"],
     }
   },
   "include": ["src", ".eslintrc.json"]

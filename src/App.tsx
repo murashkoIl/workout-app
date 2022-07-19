@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import AnimatedRoutes from "components/AnimatedRoutes";
-import { useNavigate } from "react-router-dom";
-import AuthProvider from "contexts/AuthContext";
 import {
   calculateExercisesDuration,
   fetchExercises,
@@ -14,10 +12,8 @@ import "./App.scss";
 
 function App() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/login");
     dispatch(fetchExercises(url))
       .then(() => {
         dispatch(setExerciseCards());
@@ -30,11 +26,9 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <div className="App">
-        <AnimatedRoutes />
-      </div>
-    </AuthProvider>
+    <div className="App">
+      <AnimatedRoutes />
+    </div>
   );
 }
 

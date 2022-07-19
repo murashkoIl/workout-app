@@ -3,6 +3,7 @@ import pauseReducer from "./slices/pauseSlice";
 import timerReducer from "./slices/timerSlice";
 import dataReducer from "./slices/dataSlice";
 import pagesReducer from "./slices/pagesSlice";
+import authReducer from "./slices/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     timer: timerReducer,
     data: dataReducer,
     exercises: pagesReducer,
+    auth: authReducer,
   },
 });
 

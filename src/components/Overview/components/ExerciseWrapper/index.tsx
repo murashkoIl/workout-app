@@ -38,13 +38,11 @@ function ExerciseWrapper() {
           )}
         </div>
 
-        <div className={styles.buttonWrapper}>
-          <div className={styles.button}>
-            <MainButton
-              text={exerciseCounter ? "Resume" : "Start Workout"}
-              linkTo="/exercises"
-            />
-          </div>
+        <div className={styles.button}>
+          <MainButton
+            text={exerciseCounter ? "Resume" : "Start Workout"}
+            linkTo="/exercises"
+          />
         </div>
       </div>
     </section>

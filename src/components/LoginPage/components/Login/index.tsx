@@ -1,9 +1,11 @@
 /* eslint-disable consistent-return */
 import { useRef, useState } from "react";
-import { useAuth } from "contexts/AuthContext";
 import SubmitButton from "components/Buttons/SubmitButton";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { setCurrentUser, setLoading } from "redux/slices/authSlice";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { firebaseLogin } from "helpers/firebaseHelpers";
 import InputField from "../InputField";
 import LoginErrorBlock from "../LoginStatusBlock";
 import styles from "../SignUp/SignUp.module.scss";
@@ -11,24 +13,35 @@ import styles from "../SignUp/SignUp.module.scss";
 function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { login } = useAuth();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       setError("");
-      setLoading(true);
-      await login(emailRef.current?.value, passwordRef.current?.value);
+      setIsLoading(true);
+      const { user } = await firebaseLogin(
+        emailRef.current!.value,
+        passwordRef.current!.value,
+      );
+      dispatch(
+        setCurrentUser({
+          email: user?.email || "",
+          id: user?.uid || "",
+        }),
+      );
+      dispatch(setLoading(false));
+
       navigate("/");
     } catch (err) {
       setError("Failed to sign in!");
     }
 
-    setLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -56,7 +69,7 @@ function Login() {
               <Link to="/forgot-password">Forgot Password?</Link>
             </div>
 
-            <SubmitButton text="Login" disabled={loading} />
+            <SubmitButton text="Login" disabled={isLoading} />
           </form>
           <div className={styles.link}>
             Need an accoount? <Link to="/signup">Sign Up</Link>

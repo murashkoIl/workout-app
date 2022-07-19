@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../firebase/firebase";
+import auth from "../firebase/firebase";
 
 const AuthContext = createContext<any>(null);
 

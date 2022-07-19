@@ -9,6 +9,17 @@
   animation: Opacity 1.5s;
 }
 
+.success {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.5rem 0.7rem;
+  background-color: #9fd3c7;
+  animation: Opacity 1.5s;
+}
+
 @keyframes Opacity {
   0% {
     // opacity: 0.2;

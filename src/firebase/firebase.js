@@ -10,7 +10,7 @@ import {
   firebaseDatabaseUrl,
 } from "../shared/consts";
 
-const app = firebase.initializeApp({
+export const app = firebase.initializeApp({
   apiKey: firebaseApiKey,
   authDomain: firebaseAuthDomain,
   databaseURL: firebaseDatabaseUrl,
@@ -20,5 +20,5 @@ const app = firebase.initializeApp({
   appId: firebaseAppId,
 });
 
-export const auth = app.auth();
-export default app;
+const auth = app.auth();
+export default auth;
