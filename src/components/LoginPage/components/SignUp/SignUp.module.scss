@@ -18,3 +18,28 @@
 .fake {
   height: 44.5px;
 }
+
+.link {
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.forgotPassword {
+  display: flex;
+  align-items: flex-start;
+  color: #000;
+  margin-top: -0.8rem;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

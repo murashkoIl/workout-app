@@ -15,7 +15,7 @@ function NotFoundPage() {
         We couldn`t find the page you`re looking for!
       </span>
       <div className={styles.buttonWrapper}>
-        <MainButton text="Go Back" linkTo="/" />
+        <MainButton text="Go Back" linkTo="/login" />
       </div>
     </motion.div>
   );

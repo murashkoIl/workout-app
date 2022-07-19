@@ -2,13 +2,14 @@ import styles from "./SubmitButton.module.scss";
 
 type SubmitButtonProps = {
   disabled: boolean;
+  text: string;
 };
 
-function SubmitButton({ disabled }: SubmitButtonProps) {
+function SubmitButton({ disabled, text }: SubmitButtonProps) {
   return (
     <div className={styles.buttonWrapper}>
       <button type="submit" disabled={disabled}>
-        Sign Up
+        {text}
       </button>
     </div>
   );

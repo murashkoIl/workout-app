@@ -6,13 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import InputField from "../InputField";
 import LoginErrorBlock from "../LoginStatusBlock";
-import styles from "./SignUp.module.scss";
+import styles from "../SignUp/SignUp.module.scss";
 
-function SignUp() {
+function Login() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const passwordConfirmRef = useRef<HTMLInputElement>(null);
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -20,17 +19,13 @@ function SignUp() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (passwordRef.current?.value !== passwordConfirmRef.current?.value) {
-      return setError("Passwords do not match!");
-    }
-
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current?.value, passwordRef.current?.value);
+      await login(emailRef.current?.value, passwordRef.current?.value);
       navigate("/");
     } catch (err) {
-      setError("Failed to create an account!");
+      setError("Failed to sign in!");
     }
 
     setLoading(false);
@@ -44,7 +39,7 @@ function SignUp() {
       className="container"
     >
       <div className={styles.cardWrapper}>
-        <h2 className={styles.title}>Sign Up</h2>
+        <h2 className={styles.title}>Login</h2>
         {error ? (
           <LoginErrorBlock message={error} />
         ) : (
@@ -57,20 +52,18 @@ function SignUp() {
             type="password"
             reference={passwordRef}
           />
-          <InputField
-            title="Password Confirmation"
-            type="password"
-            reference={passwordConfirmRef}
-          />
+          <div className={styles.forgotPassword}>
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
 
-          <SubmitButton text="Sign Up" disabled={loading} />
+          <SubmitButton text="Login" disabled={loading} />
         </form>
         <div className={styles.link}>
-          Already have an accoount? <Link to="/login">Log In</Link>
+          Need an accoount? <Link to="/signup">Sign Up</Link>
         </div>
       </div>
     </motion.div>
   );
 }
 
-export default SignUp;
+export default Login;
