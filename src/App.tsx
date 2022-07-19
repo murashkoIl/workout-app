@@ -17,7 +17,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/signup");
+    navigate("/login");
     dispatch(fetchExercises(url))
       .then(() => {
         dispatch(setExerciseCards());
