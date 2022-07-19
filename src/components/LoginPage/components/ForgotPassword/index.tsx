@@ -31,34 +31,35 @@ function ForgotPassword() {
   };
 
   return (
-    <motion.div
-      initial={{ width: 0 }}
-      animate={{ width: "100%" }}
-      exit={{ x: window.innerWidth }}
-      className="container"
-    >
-      <div className={styles.cardWrapper}>
-        <h2 className={styles.title}>Password Reset</h2>
-        {error ? (
-          <LoginErrorBlock message={error} />
-        ) : (
-          <div className={styles.fake} />
-        )}
-        {message && <LoginErrorBlock status="success" message={message} />}
-        <form onSubmit={handleSubmit} className={styles.form} action="submit">
-          <InputField title="Email" type="email" reference={emailRef} />
-          <div className={styles.forgotPassword}>
-            <Link to="/login">Login</Link>
+    <div className="container">
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        exit={{ x: window.innerWidth }}
+      >
+        <div className={styles.cardWrapper}>
+          <h2 className={styles.title}>Password Reset</h2>
+          {error ? (
+            <LoginErrorBlock message={error} />
+          ) : (
+            <div className={styles.fake} />
+          )}
+          {message && <LoginErrorBlock status="success" message={message} />}
+          <form onSubmit={handleSubmit} className={styles.form} action="submit">
+            <InputField title="Email" type="email" reference={emailRef} />
+            <div className={styles.forgotPassword}>
+              <Link to="/login">Login</Link>
+            </div>
+
+            <SubmitButton text="Reset Password" disabled={loading} />
+          </form>
+
+          <div className={styles.link}>
+            Need an accoount? <Link to="/signup">Sign Up</Link>
           </div>
-
-          <SubmitButton text="Reset Password" disabled={loading} />
-        </form>
-
-        <div className={styles.link}>
-          Need an accoount? <Link to="/signup">Sign Up</Link>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 

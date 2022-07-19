@@ -37,39 +37,40 @@ function SignUp() {
   };
 
   return (
-    <motion.div
-      initial={{ width: 0 }}
-      animate={{ width: "100%" }}
-      exit={{ x: window.innerWidth }}
-      className="container"
-    >
-      <div className={styles.cardWrapper}>
-        <h2 className={styles.title}>Sign Up</h2>
-        {error ? (
-          <LoginErrorBlock message={error} />
-        ) : (
-          <div className={styles.fake} />
-        )}
-        <form onSubmit={handleSubmit} className={styles.form} action="submit">
-          <InputField title="Email" type="email" reference={emailRef} />
-          <InputField
-            title="Password"
-            type="password"
-            reference={passwordRef}
-          />
-          <InputField
-            title="Password Confirmation"
-            type="password"
-            reference={passwordConfirmRef}
-          />
+    <div className="container">
+      <motion.div
+        initial={{ width: -100 }}
+        animate={{ width: "100%" }}
+        exit={{ x: window.innerWidth }}
+      >
+        <div className={styles.cardWrapper}>
+          <h2 className={styles.title}>Sign Up</h2>
+          {error ? (
+            <LoginErrorBlock message={error} />
+          ) : (
+            <div className={styles.fake} />
+          )}
+          <form onSubmit={handleSubmit} className={styles.form} action="submit">
+            <InputField title="Email" type="email" reference={emailRef} />
+            <InputField
+              title="Password"
+              type="password"
+              reference={passwordRef}
+            />
+            <InputField
+              title="Password Confirmation"
+              type="password"
+              reference={passwordConfirmRef}
+            />
 
-          <SubmitButton text="Sign Up" disabled={loading} />
-        </form>
-        <div className={styles.link}>
-          Already have an accoount? <Link to="/login">Log In</Link>
+            <SubmitButton text="Sign Up" disabled={loading} />
+          </form>
+          <div className={styles.link}>
+            Already have an accoount? <Link to="/login">Log In</Link>
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 

@@ -32,37 +32,38 @@ function Login() {
   };
 
   return (
-    <motion.div
-      initial={{ width: 0 }}
-      animate={{ width: "100%" }}
-      exit={{ x: window.innerWidth }}
-      className="container"
-    >
-      <div className={styles.cardWrapper}>
-        <h2 className={styles.title}>Login</h2>
-        {error ? (
-          <LoginErrorBlock message={error} />
-        ) : (
-          <div className={styles.fake} />
-        )}
-        <form onSubmit={handleSubmit} className={styles.form} action="submit">
-          <InputField title="Email" type="email" reference={emailRef} />
-          <InputField
-            title="Password"
-            type="password"
-            reference={passwordRef}
-          />
-          <div className={styles.forgotPassword}>
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
+    <div className="container">
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        exit={{ x: window.innerWidth }}
+      >
+        <div className={styles.cardWrapper}>
+          <h2 className={styles.title}>Login</h2>
+          {error ? (
+            <LoginErrorBlock message={error} />
+          ) : (
+            <div className={styles.fake} />
+          )}
+          <form onSubmit={handleSubmit} className={styles.form} action="submit">
+            <InputField title="Email" type="email" reference={emailRef} />
+            <InputField
+              title="Password"
+              type="password"
+              reference={passwordRef}
+            />
+            <div className={styles.forgotPassword}>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </div>
 
-          <SubmitButton text="Login" disabled={loading} />
-        </form>
-        <div className={styles.link}>
-          Need an accoount? <Link to="/signup">Sign Up</Link>
+            <SubmitButton text="Login" disabled={loading} />
+          </form>
+          <div className={styles.link}>
+            Need an accoount? <Link to="/signup">Sign Up</Link>
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
