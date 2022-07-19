@@ -1,5 +1,5 @@
 import styles from "./LoginPage.module.scss";
-import SignUp from "./SignUp";
+import SignUp from "./components/SignUp";
 
 function LoginPage() {
   return (

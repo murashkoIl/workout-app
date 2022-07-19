@@ -7,11 +7,13 @@ import {
   firebaseMessagingSenderId,
   firebaseProjectId,
   firebaseStorageBucket,
+  firebaseDatabaseUrl,
 } from "../shared/consts";
 
 const app = firebase.initializeApp({
   apiKey: firebaseApiKey,
   authDomain: firebaseAuthDomain,
+  databaseURL: firebaseDatabaseUrl,
   projectId: firebaseProjectId,
   storageBucket: firebaseStorageBucket,
   messagingSenderId: firebaseMessagingSenderId,

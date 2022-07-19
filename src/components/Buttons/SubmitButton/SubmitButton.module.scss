@@ -1,0 +1,20 @@
+.buttonWrapper {
+  margin-top: 2rem;
+
+  button {
+    color: #fff;
+    margin: 0 auto;
+    border: none;
+    width: 60%;
+    font-size: 1rem;
+    padding: 0.75rem 0.5rem;
+    background-color: #aa00ff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in;
+
+    &:hover {
+      box-shadow: 0 0 15px #ff98ff;
+    }
+  }
+}

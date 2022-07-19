@@ -1,6 +1,8 @@
 export const url = process.env.REACT_APP_API_URL || "";
-export const firebaseApiKey = process.env.REACT_APP_API_KEY || "";
+export const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY || "";
 export const firebaseAuthDomain = process.env.REACT_APP_AUTH_DOMAIN || "";
+export const firebaseDatabaseUrl =
+  process.env.REACT_APP_FIREBASE_DATABASE_URL || "";
 export const firebaseProjectId =
   process.env.REACT_APP_FIREBASE_PROJECT_ID || "";
 export const firebaseStorageBucket =
