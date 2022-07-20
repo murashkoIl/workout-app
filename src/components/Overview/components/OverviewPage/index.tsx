@@ -1,19 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useAppSelector } from "redux/hooks/hooks";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { setCurrentUser } from "redux/slices/authSlice";
 import About from "../About";
 import ExerciseWrapper from "../ExerciseWrapper";
 
 function Overview() {
-  const currentUser = useAppSelector((state) => state.auth.currentUser);
+  const dispatch = useAppDispatch();
+  const auth = getAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser) {
-      navigate("/login");
-    }
-  }, [currentUser, navigate]);
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        dispatch(
+          setCurrentUser({
+            email: user?.email || "",
+            id: user?.uid || "",
+          }),
+        );
+        navigate("/");
+      } else {
+        navigate("/login");
+      }
+    });
+  }, []);
 
   return (
     <motion.div
