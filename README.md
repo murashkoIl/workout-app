@@ -138,8 +138,6 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── Timer
                 ├── index.tsx
                 ├── Timer.module.scss
-        ├── contexts
-            ├── AuthContext.tsx
         ├── firebase
             ├── firebase.js
         ├── images
@@ -149,12 +147,14 @@ https://docs.google.com/document/d/1Q_rP2rMNaK0oaT6RcjggMxDDgW-bHhP3nh-41ibaK2o/
             ├── main.jpeg
         ├── interfaces
             ├── DataInterface.ts
+            ├── UserDataInterface.ts
             ├── ExerciseCardInterface.ts
             ├── VideosInterface.ts
         ├── redux
             ├── hooks
                 ├── hooks.ts
             ├── slices
+                ├── authSlice.ts
                 ├── dataSlice.ts
                 ├── pagesSlice.ts
                 ├── pauseSlice.ts
