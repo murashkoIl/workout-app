@@ -14,7 +14,7 @@ function Overview() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(
           setCurrentUser({
